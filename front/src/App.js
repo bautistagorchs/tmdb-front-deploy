@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import "./index.scss";
 import { Route, Routes } from "react-router";
 import LogIn from "./components/LogIn";
+import Movies from "./components/Movies";
 
 const App = () => {
   const API = fetch(
@@ -16,6 +17,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/login" element={<LogIn />} />
+        <Route path="/movies" element={<Movies />} />
       </Routes>
     </div>
   );
