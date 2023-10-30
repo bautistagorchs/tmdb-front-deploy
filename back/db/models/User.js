@@ -1,31 +1,31 @@
 const S = require("sequelize");
 const db = require("../index");
 
-class User extends S.Model {}
+class Users extends S.Model {}
 
-User.init(
+Users.init(
   {
     email: {
-      type: Sequelize.STRING,
+      type: S.STRING,
       allowNull: false,
     },
     name: {
-      type: Sequelize.STRING,
+      type: S.STRING,
       allowNull: false,
     },
     lastname: {
-      type: Sequelize.STRING,
+      type: S.STRING,
       allowNull: false,
     },
     password: {
-      type: Sequelize.STRING,
+      type: S.STRING,
       allowNull: false,
     },
     salt: {
-      type: Sequelize.STRING,
+      type: S.STRING,
     },
   },
-  { sequelize: db, modelName: "user" }
+  { sequelize: db, modelName: "users" }
 );
 
-module.exports = User;
+module.exports = Users;
