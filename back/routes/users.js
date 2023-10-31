@@ -28,7 +28,7 @@ router.post("/login", (req, res) => {
     // validate hasedPassword
     user.validatePassword(req.body.password).then((match) => {
       if (!match) return res.sendStatus(401);
-
+      // set payload to send to client
       const payload = {
         email: user.email,
         username: user.username,
