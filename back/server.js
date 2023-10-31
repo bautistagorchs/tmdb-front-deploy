@@ -4,10 +4,12 @@ const morgan = require("morgan");
 const db = require("./db/index");
 const cors = require("cors");
 const routes = require("./routes/index");
+const cookieParser = require("cookie-parser");
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors("http://localhost:3000"));
 
 app.use("/api", routes);
 
