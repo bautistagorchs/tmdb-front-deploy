@@ -1,7 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   color: black;
-  background: url("https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg");
+  background-image: url("https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg");
   background-size: cover;
 }
 
@@ -38,6 +38,13 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+  z-index: 2;
+  h3 {
+    color: white;
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-top: 0px;
+  }
 }
 
 .login-box .user-box {
@@ -120,4 +127,17 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #f31515);
   animation: btn-anim1 2s linear infinite;
+}
+
+.loginPage {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro con opacidad (0.5) */
+    z-index: 1; /* Asegura que el pseudo-elemento esté sobre la imagen de fondo */
+  }
 }

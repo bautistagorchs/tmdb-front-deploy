@@ -4,15 +4,12 @@ const User = require("../db/models/User");
 const { generateToken, validateToken } = require("../config/token");
 
 // see all users
-router.get("/", (req, res) => {
-  User.findAll()
-    .then((users) => res.status(200).send(users))
-    .catch((err) => console.error(err));
-});
+// router.get("/", (req, res) => {
+//   User.findAll()
+//     .then((users) => res.status(200).send(users))
+//     .catch((err) => console.error(err));
+// });
 
-router.get("/firulais", (req, res) => {
-  res.status(200).send("yes Firulais, you are alive!");
-});
 // register new user
 router.post("/register", (req, res) => {
   User.create(req.body).then((newUser) => res.status(201).send(newUser));
