@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
+    "antd": "^5.10.3",
     "axios": "^1.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -11,7 +13,8 @@
     "react-router-dom": "^6.17.0",
     "react-scripts": "^4.0.3",
     "redux": "^4.2.1",
-    "sass": "^1.69.5"
+    "sass": "^1.69.5",
+    "toolkit": "^1.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
