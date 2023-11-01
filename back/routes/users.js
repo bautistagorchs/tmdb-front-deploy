@@ -18,9 +18,9 @@ router.post("/register", (req, res) => {
 // login with existing user
 router.post("/login", (req, res) => {
   // find one user via email
-  User.findOne({ where: { email: req.body.email } }).then((user) => {
+  User.findOne({ where: { username: req.body.username } }).then((user) => {
     // if doesn`t exist sendStatus 401
-    if (!user) return res.sendStatus(401);
+    if (!user) return res.status(401).send("no se pudo encontrar al usuario");
 
     // validate hasedPassword
     user.validatePassword(req.body.password).then((match) => {

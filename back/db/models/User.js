@@ -23,6 +23,7 @@ Users.init(
   {
     email: {
       type: S.STRING,
+      unique: true,
       allowNull: false,
     },
     username: {
