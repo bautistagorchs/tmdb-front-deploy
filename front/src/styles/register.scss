@@ -1,31 +1,3 @@
-body {
-  font-family: "Montserrat", sans-serif;
-  color: black;
-  background-image: url("https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg");
-  background-size: cover;
-}
-
-.navbar {
-  height: 6rem;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: 400;
-  font-size: 2rem;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-  button {
-    border-radius: 8px;
-    height: 2.3rem;
-    width: 4.3rem;
-    font-size: 1rem;
-  }
-}
-
 //  F    O    R    M
 .login-box {
   position: absolute;
@@ -39,9 +11,18 @@ body {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   z-index: 2;
+  h1 {
+    color: #f31515;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    // padding-bottom: 0.5rem;
+    // text-decoration: underline;
+  }
   h3 {
     color: white;
     text-align: center;
+    text-decoration: underline;
     padding-bottom: 2rem;
     margin-top: 0px;
   }
@@ -127,17 +108,4 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #f31515);
   animation: btn-anim1 2s linear infinite;
-}
-
-.loginPage {
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro con opacidad (0.5) */
-    z-index: 1; /* Asegura que el pseudo-elemento esté sobre la imagen de fondo */
-  }
 }
