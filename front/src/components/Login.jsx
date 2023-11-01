@@ -1,43 +1,61 @@
-import React, { useState } from "react";
-//import { Link } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch /*useSelector*/ } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
+import { setUser } from "../store/user";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  //styles
+  useEffect(() => {
+    document.body.classList.toggle(
+      "loginPage",
+      location.pathname === "/users/login"
+    );
+    return () => {
+      document.body.classList.remove("loginPage");
+    };
+  }, [location.pathname]);
+
+  // all the logic of inputs
   const [inputData, setInputData] = useState({
-    email: "",
     password: "",
     username: "",
   });
-
+  const [error, setError] = useState(null);
   const inputValue = (e) => {
     const { name, value } = e.target;
     setInputData((previousState) => {
       return { ...previousState, [name]: value };
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/api/users/register", inputData)
-      .catch((error) => console.error(error));
-    setInputData({ email: "", password: "", username: "" });
+      .post("http://localhost:3001/api/users/login", inputData)
+      .then(() => navigate(`/main`))
+      .catch((error) => {
+        setError("username or passsword incorrect");
+        console.error(error);
+      });
+    const { username, password } = inputData;
+    dispatch(setUser(username, password));
+    setInputData({ password: "", username: "" });
   };
-  document.body.classList.add("loginPage");
+
   return (
     <div className="login-box">
-      <h3>Give us your data and we"ll show you movies!</h3>
+      <h1>Hey, Welcome back!</h1>
       <form>
-        <div className="user-box">
-          <input type="text" name="email" required="" onChange={inputValue} />
-          <label>Email</label>
-        </div>
         <div className="user-box">
           <input
             type="text"
             name="username"
             required=""
             onChange={inputValue}
+            // placeholder="username"
           />
           <label>Username</label>
         </div>
@@ -50,13 +68,16 @@ const Login = () => {
           />
           <label>Password</label>
         </div>
+        <div className="user-box">{error && <p>{error}</p>}</div>
         <center onClick={handleSubmit}>
           <a href="/users/register">
-            SIGN UP
+            SIGN IN
             <span></span>
           </a>
         </center>
       </form>
+      <h4>Dont have an account yet?</h4>
+      <a href="/users/register">Sign Up here!</a>
     </div>
   );
 };
