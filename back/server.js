@@ -9,14 +9,14 @@ const cookieParser = require("cookie-parser");
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(cors("http://localhost:3000"));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 app.use("/api", routes);
 
 db.sync({ force: false })
   .then(() => {
     app.listen(3001, () => {
-      console.log("Server levantado en el 3001");
+      console.log("Server levantado en el 3001 👻");
     });
   })
   .catch(console.error);
