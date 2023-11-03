@@ -26,7 +26,11 @@ Users.init(
       unique: true,
       allowNull: false,
     },
-    username: {
+    name: {
+      type: S.STRING,
+      allowNull: false,
+    },
+    last_name: {
       type: S.STRING,
       allowNull: false,
     },

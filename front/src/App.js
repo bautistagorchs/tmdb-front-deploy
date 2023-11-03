@@ -10,7 +10,7 @@ import Login from "./components/Login";
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
+      <Route path="/main" element={<Main />} />
       <Route path="/movies" element={<Movies />} />
       <Route path="/users/register" element={<Register />} />
       <Route path="/users/login" element={<Login />} />

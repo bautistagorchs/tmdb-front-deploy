@@ -4,6 +4,7 @@ import Swiper from "../commons/Swiper";
 import Header from "../commons/Header";
 
 const Grid = () => {
+  /* eslint-disable */
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [trendingTvShows, setTrendingTvShows] = useState([]);
   const [airingToday, setAiringToday] = useState([]);

@@ -7,7 +7,8 @@ const Login = () => {
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
+    last_name: "",
   });
 
   const inputValue = (e) => {
@@ -26,7 +27,7 @@ const Login = () => {
         setUser();
       })
       .catch((error) => console.error(error));
-    setInputData({ email: "", password: "", username: "" });
+    setInputData({ email: "", password: "", name: "", last_name: "" });
   };
   document.body.classList.add("loginPage");
   return (
@@ -39,13 +40,17 @@ const Login = () => {
           <label>Email</label>
         </div>
         <div className="user-box">
+          <input type="text" name="name" required="" onChange={inputValue} />
+          <label>Name</label>
+        </div>
+        <div className="user-box">
           <input
             type="text"
-            name="username"
+            name="last_name"
             required=""
             onChange={inputValue}
           />
-          <label>Username</label>
+          <label>Last name</label>
         </div>
         <div className="user-box">
           <input
@@ -57,14 +62,18 @@ const Login = () => {
           <label>Password</label>
         </div>
         <center onClick={handleSubmit}>
+          {/* ASK HERE! */}
           <a href="/users/register">
             SIGN UP
             <span></span>
           </a>
         </center>
       </form>
-      <h4>Already have an account yet?</h4>
-      <a href="/users/login">Sign In here!</a>
+      <h4>Already have an account?</h4>
+      {/* ASK HERE! */}
+      <a className="tag-a-register-login" href="/users/login">
+        Sign In here!
+      </a>
     </div>
   );
 };

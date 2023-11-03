@@ -22,7 +22,7 @@ const Login = () => {
   // all the logic of inputs
   const [inputData, setInputData] = useState({
     password: "",
-    username: "",
+    email: "",
   });
   const [error, setError] = useState(null);
   const inputValue = (e) => {
@@ -37,12 +37,12 @@ const Login = () => {
       .post("http://localhost:3001/api/users/login", inputData)
       .then(() => navigate(`/`))
       .catch((error) => {
-        setError("username or passsword incorrect");
+        setError("email or passsword incorrect");
         console.error(error);
       });
-    const { username, password } = inputData;
-    dispatch(setUser(username, password));
-    setInputData({ password: "", username: "" });
+    const { email, password } = inputData;
+    dispatch(setUser(email, password));
+    setInputData({ password: "", email: "" });
   };
 
   return (
@@ -52,12 +52,12 @@ const Login = () => {
         <div className="user-box">
           <input
             type="text"
-            name="username"
+            name="email"
             required=""
             onChange={inputValue}
-            // placeholder="username"
+            // placeholder="email"
           />
-          <label>Username</label>
+          <label>Email</label>
         </div>
         <div className="user-box">
           <input
@@ -68,8 +68,9 @@ const Login = () => {
           />
           <label>Password</label>
         </div>
-        <div className="user-box">{error && <p>{error}</p>}</div>
+        <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
+          {/* ASK HERE! */}
           <a href="/users/register">
             SIGN IN
             <span></span>
@@ -77,7 +78,10 @@ const Login = () => {
         </center>
       </form>
       <h4>Dont have an account yet?</h4>
-      <a href="/users/register">Sign Up here!</a>
+      {/* ASK HERE! */}
+      <a className="tag-a-register-login" href="/users/register">
+        Sign Up here!
+      </a>
     </div>
   );
 };

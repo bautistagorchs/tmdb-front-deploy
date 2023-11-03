@@ -5,7 +5,8 @@ export const setUser = createAction("SET_USER");
 const initialState = {
   id: undefined,
   email: undefined,
-  username: undefined,
+  name: undefined,
+  last_name: undefined,
   // password: undefined,
 };
 

@@ -18,7 +18,7 @@ router.post("/register", (req, res) => {
 // login with existing user
 router.post("/login", (req, res) => {
   // find one user via email
-  User.findOne({ where: { username: req.body.username } }).then((user) => {
+  User.findOne({ where: { email: req.body.email } }).then((user) => {
     // if doesn`t exist sendStatus 401
     if (!user) return res.status(401).send("no se pudo encontrar al usuario");
 
@@ -28,7 +28,8 @@ router.post("/login", (req, res) => {
       // set payload to send to client
       const payload = {
         email: user.email,
-        username: user.username,
+        name: user.name,
+        last_name: user.last_name,
       };
       const token = generateToken(payload);
       res.cookie("token", token);

@@ -10,8 +10,9 @@ const Navbar = () => {
       <Link to="/main">Home</Link>
       <Link to="/movies">Movies</Link>
       <Link to="/">Tv Shows</Link>
+      {/* ASK HERE! */}
       {user.id ? (
-        <p>Welcome, ${user.username}</p>
+        <p>Welcome, ${user.name}</p>
       ) : (
         <a href="/users/login">Log in</a>
       )}
