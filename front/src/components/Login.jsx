@@ -35,7 +35,7 @@ const Login = () => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/login", inputData)
-      .then(() => navigate(`/main`))
+      .then(() => navigate(`/`))
       .catch((error) => {
         setError("username or passsword incorrect");
         console.error(error);

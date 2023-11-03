@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "./Navbar";
-// import Movies from "./Movies";
-// import TvShows from "./TvShows";
+import Grid from "./Grid";
 
 const Main = () => {
   return (
     <div>
       <Navbar />
+      <Grid />
     </div>
   );
 };
