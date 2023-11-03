@@ -23,23 +23,10 @@
     // text-decoration: underline;
   }
   h4,
-  a {
-    color: white;
-  }
   p {
     margin-top: 0;
     text-align: center;
     color: #f31515;
     letter-spacing: -0.5px;
   }
-  // input {
-  //   &::placeholder {
-  //     color: transparent;
-  //   }
-  //   &:focus::placeholder,
-  //   &:valid::placeholder {
-  //     color: aquamarine;
-  //     transform: translateY(-20px);
-  //   }
-  // }
 }

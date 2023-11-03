@@ -2,29 +2,12 @@
 @import "./main.scss";
 @import "./navbar.scss";
 @import "./register.scss";
+@import "./swiper.scss";
+@import "./grid.scss";
+@import "./header.scss";
 
 body {
   font-family: "Montserrat", sans-serif;
   color: black;
-}
-
-.navbar {
-  height: 6rem;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: 400;
-  font-size: 2rem;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-  button {
-    border-radius: 8px;
-    height: 2.3rem;
-    width: 4.3rem;
-    font-size: 1rem;
-  }
+  background-color: rgb(39, 33, 33);
 }
