@@ -64,7 +64,6 @@ const Grid = () => {
       })
       .catch((err) => console.error(err));
   }, []);
-  // console.log("movies por genero", animationMovies);
   return (
     <div>
       <Header title={"Trending Movies"} />

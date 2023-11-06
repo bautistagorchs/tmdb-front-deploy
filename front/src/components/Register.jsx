@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 //import { Link } from "react-router-dom";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router";
 
 const Login = () => {
-  const [, /*user*/ setUser] = useState(undefined);
-  const [inputData, setInputData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    last_name: "",
-  });
+  const initialState = { email: "", password: "", name: "", last_name: "" };
+  const navigate = useNavigate();
+  const [invalidEmail, setInvalidEmail] = useState(null);
+  const [user, setUser] = useState({});
+  const [inputData, setInputData] = useState(initialState);
 
   const inputValue = (e) => {
     const { name, value } = e.target;
@@ -22,12 +21,16 @@ const Login = () => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/register", inputData)
-      .then(() => {
-        console.log("este es el input data", inputData);
-        setUser();
+      .then((response) => {
+        setUser(response.data);
+        navigate("/users/login");
       })
-      .catch((error) => console.error(error));
-    setInputData({ email: "", password: "", name: "", last_name: "" });
+      .catch(() =>
+        setInvalidEmail(
+          "Email associated with an existing account. Sadly we do not offer password recuperation, so better remember it!"
+        )
+      );
+    setInputData(initialState);
   };
   document.body.classList.add("loginPage");
   return (
@@ -61,6 +64,7 @@ const Login = () => {
           />
           <label>Password</label>
         </div>
+        <div className="user-box">{invalidEmail && <p>{invalidEmail}</p>} </div>
         <center onClick={handleSubmit}>
           {/* ASK HERE! */}
           <a href="/users/register">

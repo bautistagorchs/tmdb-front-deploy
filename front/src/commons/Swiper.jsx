@@ -10,7 +10,6 @@ const Card = ({ trending }) => {
   };
   SwiperCore.use([Navigation, Scrollbar]);
 
-  //console.log(trending);
   return (
     <Swiper
       spaceBetween={10}
@@ -19,8 +18,6 @@ const Card = ({ trending }) => {
       navigation={true}
       // keyboard={true}
       // scrollbar={{ draggable: true }}
-      // onSlideChange={() => console.log("slide change")}
-      // onSwiper={(swiper) => console.log(swiper)}
     >
       {trending.length &&
         trending.map((content, i) => (
