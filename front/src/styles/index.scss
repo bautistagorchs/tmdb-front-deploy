@@ -1,4 +1,4 @@
-@import "./loginAndRegister.scss";
+@import "./login.scss";
 @import "./main.scss";
 @import "./navbar.scss";
 @import "./swiper.scss";
@@ -6,7 +6,246 @@
 @import "./header.scss";
 
 body {
+  margin: 0; /* Elimina los márgenes del cuerpo */
+  padding: 0; /* Elimina el relleno del cuerpo */
   font-family: "Montserrat", sans-serif;
   color: black;
+}
+
+.indexPage {
   background-color: rgb(39, 33, 33);
+  margin: 0;
+  background-image: url("https://img.freepik.com/premium-photo/abstract-colorful-4k-wallpaper-3d-illustration-generative-ai_170984-5620.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1698883200&semt=ais");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  // border: 7px solid blue;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color oscuro con opacidad (0.5) */
+    z-index: -1; /* Asegura que el pseudo-elemento esté sobre la imagen de fondo */
+  }
+}
+.index {
+  position: relative;
+  margin-top: 15%;
+  height: 43vh;
+  width: 105vh;
+  background: rgba(36, 29, 29, 0.987);
+  color: white;
+  border-radius: 20px;
+}
+
+.index-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    margin-top: 5%;
+    font-family: "Kanit", sans-serif;
+    letter-spacing: 2px;
+    // text-decoration: underline;
+    color: #f31515;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  h2 {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: -2px;
+  }
+  h4 {
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+}
+
+/*bg*/
+/*txt*/
+/*success*/
+.buttons {
+  display: flex;
+  justify-content: center;
+  top: 20px;
+  left: 20px;
+}
+
+.buttons button {
+  width: 191px;
+  height: 74px;
+  background-color: white;
+  margin: 40px;
+  color: #568fa6;
+  position: relative;
+  overflow: hidden;
+  font-size: 14px;
+  letter-spacing: 7px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+.buttons button:before,
+.buttons button:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #df4a4a;
+  transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+}
+
+.buttons button:before {
+  right: 0;
+  top: 0;
+  transition: all 0.6s cubic-bezier(0.35, 0.1, 0.25, 1);
+}
+
+.buttons button:after {
+  left: 0;
+  bottom: 0;
+}
+
+.buttons button span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.buttons button span:before,
+.buttons button span:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background-color: #df4a4a;
+  transition: all 0.4s cubic-bezier(0.35, 0.1, 0.25, 1);
+}
+
+.buttons button span:before {
+  right: 0;
+  top: 0;
+  transition: all 0.6s cubic-bezier(0.35, 0.1, 0.25, 1);
+}
+
+.buttons button span:after {
+  left: 0;
+  bottom: 0;
+}
+
+.buttons button p {
+  padding: 0;
+  margin: 0;
+  transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.buttons button p:before,
+.buttons button p:after {
+  position: absolute;
+  width: 100%;
+  transition: all 0.5s cubic-bezier(0.35, 0.1, 0.25, 1);
+  z-index: 1;
+  left: 0;
+}
+
+.buttons button p:before {
+  content: attr(data-title);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.buttons button p:after {
+  content: attr(data-text);
+  top: 150%;
+  color: #520101;
+}
+
+.buttons button:hover:before,
+.buttons button:hover:after {
+  width: 100%;
+}
+
+.buttons button:hover span {
+  z-index: 1;
+}
+
+.buttons button:hover span:before,
+.buttons button:hover span:after {
+  height: 100%;
+}
+
+.buttons button:hover p:before {
+  top: -50%;
+  transform: rotate(5deg);
+}
+
+.buttons button:hover p:after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.buttons button.start {
+  background-color: #df4a4a;
+  box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.buttons button.start p:before {
+  top: -50%;
+  transform: rotate(5deg);
+}
+
+.buttons button.start p:after {
+  color: white;
+  transition: all 0.1s ease;
+  content: attr(data-start);
+  top: 50%;
+  transform: translateY(-50%);
+  animation: start 0.3s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes start {
+  from {
+    top: -50%;
+  }
+}
+
+.buttons button.start:hover:before,
+.buttons button.start:hover:after {
+  display: none;
+}
+
+.buttons button.start:hover span {
+  display: none;
+}
+
+.buttons button:active {
+  outline: none;
+  border: none;
+}
+
+.buttons button:focus {
+  outline: 0;
 }

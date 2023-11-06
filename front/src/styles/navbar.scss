@@ -13,6 +13,14 @@
     color: rgba(248, 48, 48, 0.842);
     transition: 0.8s;
   }
+  a:hover {
+    border-radius: 7px;
+    background-color: rgba(248, 48, 48, 0.637);
+    color: black;
+
+    box-shadow: 0 0 5px #f31515, 0 0 130px #f31515, 0 0 1px #f31515,
+      0 0 89px #f31515;
+  }
 }
 .links-navbar {
   width: 73%;
@@ -24,12 +32,12 @@
     font-size: 1.7rem;
     transition: 0.8s;
   }
-}
-a:hover {
-  border-radius: 7px;
-  background-color: rgba(248, 48, 48, 0.637);
-  color: black;
+  a:hover {
+    border-radius: 7px;
+    background-color: rgba(248, 48, 48, 0.637);
+    color: black;
 
-  box-shadow: 0 0 5px #f31515, 0 0 130px #f31515, 0 0 1px #f31515,
-    0 0 89px #f31515;
+    box-shadow: 0 0 5px #f31515, 0 0 130px #f31515, 0 0 1px #f31515,
+      0 0 89px #f31515;
+  }
 }

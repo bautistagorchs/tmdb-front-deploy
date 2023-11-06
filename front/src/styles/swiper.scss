@@ -10,12 +10,45 @@
   width: 92%;
   // border: 1px solid white;
 }
-
 div {
   img {
     height: 100%;
     width: 100%;
   }
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: black;
+}
+/* Aplica una rotación de 0 grados (sin rotación) en el eje Y a las imágenes */
+.SwiperSlide img {
+  transform: rotateY(0deg);
+  transition: filter 0.9s ease; /* Agrega una transición suave para la rotación */
+  filter: brightness(1); /* Mantiene la imagen con brillo completo */
+  position: relative; /* Permite posicionar elementos secundarios */
+}
+/* Oculta el elemento con la clase 'img-back' de forma predeterminada */
+.SwiperSlide .img-back {
+  opacity: 0;
+  transition: opacity 3s ease; /* Agrega una transición suave para la opacidad */
+  position: absolute; /* Coloca el elemento sobre la imagen */
+  top: 0; /* Ajusta la posición superior para que esté encima de la imagen */
+  left: 0; /* Ajusta la posición izquierda para que esté encima de la imagen */
+  p {
+    font-size: 0.9rem;
+    text-align: center;
+    padding-top: 87%;
+  }
+}
+/* Cuando se hace hover en .SwiperSlide, rota la imagen en el eje Y a 180 grados */
+.SwiperSlide:hover img {
+  // transform: rotateY(180deg);
+  filter: brightness(0.1); /* Oscurece la imagen al hacer hover */
+}
+
+/* Cuando se hace hover en .SwiperSlide, muestra 'img-back' con opacidad 1 */
+.SwiperSlide:hover .img-back {
+  opacity: 1;
 }
 
 // /* Estiliza el contenedor de la imagen */
@@ -63,36 +96,3 @@ div {
 // .swiper-slide:hover .img-back {
 //   opacity: 1;
 // }
-
-/* Aplica una rotación de 0 grados (sin rotación) en el eje Y a las imágenes */
-.SwiperSlide img {
-  transform: rotateY(0deg);
-  transition: filter 1s ease; /* Agrega una transición suave para la rotación */
-  filter: brightness(1); /* Mantiene la imagen con brillo completo */
-  position: relative; /* Permite posicionar elementos secundarios */
-}
-
-/* Oculta el elemento con la clase 'img-back' de forma predeterminada */
-.SwiperSlide .img-back {
-  opacity: 0;
-  transition: opacity 3s ease; /* Agrega una transición suave para la opacidad */
-  position: absolute; /* Coloca el elemento sobre la imagen */
-  top: 0; /* Ajusta la posición superior para que esté encima de la imagen */
-  left: 0; /* Ajusta la posición izquierda para que esté encima de la imagen */
-  p {
-    font-size: 0.9rem;
-    text-align: center;
-    padding-top: 87%;
-  }
-}
-
-/* Cuando se hace hover en .SwiperSlide, rota la imagen en el eje Y a 180 grados */
-.SwiperSlide:hover img {
-  // transform: rotateY(180deg);
-  filter: brightness(0.2); /* Oscurece la imagen al hacer hover */
-}
-
-/* Cuando se hace hover en .SwiperSlide, muestra 'img-back' con opacidad 1 */
-.SwiperSlide:hover .img-back {
-  opacity: 1;
-}
