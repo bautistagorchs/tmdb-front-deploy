@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../db/models/User");
 const { generateToken, validateToken } = require("../config/token");
+const { validateAuth } = require("../config/auth");
 
 // see all users
 // router.get("/", (req, res) => {
@@ -36,6 +37,9 @@ router.post("/login", (req, res) => {
       res.send(payload);
     });
   });
+});
+router.get("/me", validateAuth, (req, res) => {
+  res.send(req.user);
 });
 
 router.use("/", (req, res) => res.sendStatus(404));

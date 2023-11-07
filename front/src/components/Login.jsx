@@ -34,7 +34,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/api/users/login", inputData)
+      .post("http://localhost:3001/api/users/login", inputData, {
+        withCredentials: true,
+      })
       .then(() => navigate("/" + "main"))
       .catch((error) => {
         setError("email or passsword incorrect");

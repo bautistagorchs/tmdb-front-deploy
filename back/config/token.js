@@ -2,10 +2,12 @@ const jwt = require("jsonwebtoken");
 const SECRET = "potatopizza";
 
 function generateToken(payload) {
-  const token = jwt.sign(payload, SECRET, { expiresIn: "2d" });
+  const token = jwt.sign({ user: payload }, SECRET, { expiresIn: "2d" });
   return token;
 }
 
-function validateToken() {}
+function validateToken(token) {
+  return jwt.verify(token, SECRET);
+}
 
 module.exports = { generateToken, validateToken };

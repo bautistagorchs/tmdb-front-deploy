@@ -3,11 +3,10 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 
 export const setUser = createAction("SET_USER");
 const initialState = {
-  id: undefined,
-  email: undefined,
-  name: undefined,
-  last_name: undefined,
-  // password: undefined,
+  email: null,
+  name: null,
+  last_name: null,
+  favorites: [],
 };
 
 const userReducer = createReducer(initialState, {

@@ -4,12 +4,6 @@ const bcrypt = require("bcrypt");
 
 class Users extends S.Model {
   hash(password, salt) {
-    // console.log(
-    //   "soy el console log del static, y recibo un password:",
-    //   password,
-    //   "y un salt:",
-    //   salt
-    // );
     return bcrypt.hash(password, salt);
   }
   validatePassword(password) {
@@ -47,13 +41,8 @@ Users.init(
 
 Users.beforeCreate((user) => {
   const salt = bcrypt.genSaltSync();
-  // console.log("soy el salt generado por la funcion Sync", salt);
   user.salt = salt;
   return user.hash(user.password, salt).then((hash) => {
-    // console.log(
-    //   "y yo estoy adentro del return, y puedo mostrar que es el hash:",
-    //   hash
-    // );
     user.password = hash;
   });
 });
