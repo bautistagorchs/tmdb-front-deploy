@@ -10,6 +10,7 @@ import Index from "./components/Index";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/user";
+import Search from "./components/Search";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
       <Route path="/movies" element={<Movies />} />
       <Route path="/users/register" element={<Register />} />
       <Route path="/users/login" element={<Login />} />
+      <Route path="/search" element={<Search />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

@@ -4,7 +4,6 @@ import Swiper from "../commons/Swiper";
 import Header from "../commons/Header";
 
 const Grid = () => {
-  /* eslint-disable */
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [trendingTvShows, setTrendingTvShows] = useState([]);
   const [airingToday, setAiringToday] = useState([]);
@@ -64,6 +63,7 @@ const Grid = () => {
       })
       .catch((err) => console.error(err));
   }, []);
+
   return (
     <div>
       <Header title={"Trending Movies"} />

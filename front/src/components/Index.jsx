@@ -18,9 +18,9 @@ const Index = () => {
         <h2> We are happy to have here!</h2>
         <h4>Ready to enjoy the best movies in the best site?</h4>
       </div>
-      <div class="buttons">
+      <div className="buttons">
         <Link to="/users/register">
-          <button class="btn">
+          <button className="btn">
             <span></span>
             <p
               data-start="good luck!"
@@ -30,7 +30,7 @@ const Index = () => {
           </button>
         </Link>
         <Link to="/users/login">
-          <button class="btn">
+          <button className="btn">
             <span></span>
             <p
               data-start="good luck!"

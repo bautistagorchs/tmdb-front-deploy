@@ -34,7 +34,6 @@ const Card = ({ trending }) => {
                     ? truncate(content.overview)
                     : "No description available, I guess you will have to watch it!"}
                 </p>
-                {/* <p>{content.title || content.name}</p> */}
               </div>
             </div>
           </SwiperSlide>
