@@ -8,9 +8,7 @@ import SearchCard from "../commons/SearchCard";
 import { useSelector } from "react-redux";
 
 const Search = () => {
-  // const searchInput = "zootopia";
   const search = useSelector((state) => state.search);
-
   //styles
   const location = useLocation();
   useEffect(() => {
@@ -20,6 +18,7 @@ const Search = () => {
     };
   }, [location.pathname]);
   const [searchMovie, setSearchMovie] = useState([]);
+  const [searchTvShow, setSearchTvShow] = useState([]);
   const options = {
     headers: {
       accept: "application/json",
@@ -31,7 +30,7 @@ const Search = () => {
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?query=${
-          search.result || ""
+          search.movieResult || ""
         }`,
         options
       )
@@ -39,12 +38,30 @@ const Search = () => {
         setSearchMovie(response.data.results);
       })
       .catch((err) => console.error(err));
-  }, [search.result]);
+  }, [search.movieResult]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/search/tv?query=${search.tvResult || ""}`,
+        options
+      )
+      .then((response) => {
+        setSearchTvShow(response.data.results);
+      })
+      .catch((err) => console.error(err));
+  }, [search.tvResult]);
+  console.log(searchTvShow);
   return (
     <div>
       <Navbar />
-      <Header title={`Results for: ${search.result || "..."}`} />
+      <Header title={`Results for: ${search.movieResult || "..."}`} />
       <SearchCard search={searchMovie} />
+      <Header
+        title={
+          searchTvShow.length ? `Results for: ${search.tvResult || "..."}` : ""
+        }
+      />
+      <SearchCard search={searchTvShow} />
     </div>
   );
 };

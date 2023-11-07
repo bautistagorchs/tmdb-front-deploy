@@ -14,7 +14,9 @@ const Navbar = () => {
   };
   const handleKeyPress = (e) => {
     if (e.key == "Enter") {
-      dispatch(setSearch({ result: e.target.value }));
+      dispatch(
+        setSearch({ movieResult: e.target.value, tvResult: e.target.value })
+      );
     }
   };
   const handleLogoutClick = (e) => {
@@ -23,20 +25,23 @@ const Navbar = () => {
       .post(
         "http://localhost:3001/api/users/logout",
         { user: user.email },
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       )
       .then(() => navigate("/"))
       .catch((error) => {
         console.error(error);
       });
   };
+  const setSearchValueNull = () => {
+    dispatch(setSearch({ movieResult: null, tvResult: null }));
+  };
   return (
     <div className="navbar">
       <div className="navbar-home-div">
         <Link to="/main">
-          <button className="home-button">Home</button>
+          <button className="home-button" onClick={setSearchValueNull}>
+            Home
+          </button>
         </Link>
       </div>
 
