@@ -15,7 +15,6 @@ const SearchCard = ({ search }) => {
               {content.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${content.poster_path}`}
-                  alt=""
                   className="img-front"
                 />
               ) : (

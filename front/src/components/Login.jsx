@@ -73,7 +73,7 @@ const Login = () => {
         <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
           {/* ASK HERE! */}
-          <a href="/users/register">
+          <a href="/users/login">
             SIGN IN
             <span></span>
           </a>

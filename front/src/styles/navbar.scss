@@ -9,7 +9,20 @@
   margin-top: 20px;
   margin-left: 4%;
 }
-
+.navbar-logout-div,
+.navbar-home-div {
+  width: 18%;
+  display: flex;
+  align-content: center;
+  // border: 2px solid pink;
+  p {
+    font-size: smaller;
+    padding-top: 3%;
+  }
+}
+.navbar-logout-div {
+  justify-content: space-between;
+}
 .search-button,
 .home-button {
   position: relative;

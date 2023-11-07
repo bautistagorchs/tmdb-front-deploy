@@ -38,6 +38,12 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+router.post("/logout", validateAuth, (req, res) => {
+  res.clearCookie("token");
+  res.sendStatus(204);
+});
+
 router.get("/me", validateAuth, (req, res) => {
   res.send(req.user);
 });

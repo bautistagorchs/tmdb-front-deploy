@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+// import { motion } from "framer-motion/dist/framer-motion";
 
 const Index = () => {
   const location = useLocation();
@@ -12,7 +13,12 @@ const Index = () => {
     };
   }, [location.pathname]);
   return (
-    <div className="index">
+    <div
+      className="index"
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+    >
       <div className="index-content">
         <h1>Hey there!</h1>
         <h2> We are happy to have here!</h2>
