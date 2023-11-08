@@ -3,9 +3,6 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
 const SearchCard = ({ search }) => {
-  // const truncate = (overview) => {
-  //   return overview.slice(0, 110) + "...";
-  // };
   return (
     <div className="parent">
       {search.length &&

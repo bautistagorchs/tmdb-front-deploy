@@ -33,7 +33,8 @@ Users.init(
       allowNull: false,
     },
     favourites: {
-      type: S.STRING,
+      type: S.ARRAY(S.INTEGER),
+      defaultValue: [],
     },
     salt: {
       type: S.STRING,

@@ -26,18 +26,32 @@ router.post("/login", (req, res) => {
   });
 });
 router.post("/favourites", (req, res) => {
-  User.update(
-    { favourites: req.body.favourites },
-    { where: { email: req.body.email }, returning: true }
-  )
-    .then(([affectedRow, updated]) => res.status(202).send(updated[0]))
-    .then(() => res.send())
+  console.log(req.body);
+  User.findOne({ where: { email: req.body.email } })
+    .then((user) => {
+      if (user) {
+        user.dataValues.favourites.push(req.body.newFavourite);
+        User.update(
+          { favourites: user.dataValues.favourites },
+          {
+            where: { email: req.body.email },
+            returning: true,
+          }
+        ).then(() => res.sendStatus(201));
+      } else res.status(404).send("user not found");
+    })
     .catch((err) => console.error(err));
 });
 
 router.post("/logout", validateAuth, (req, res) => {
   res.clearCookie("token");
   res.sendStatus(204);
+});
+
+router.get("/all", (req, res) => {
+  User.findAll()
+    .then((response) => res.status(200).send(response))
+    .catch((err) => console.error(err));
 });
 
 router.get("/me", validateAuth, (req, res) => {

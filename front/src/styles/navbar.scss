@@ -24,8 +24,7 @@
   justify-content: space-between;
 }
 .search-button,
-.home-button,
-.favourites-button {
+.home-button {
   position: relative;
   padding: 10px 20px;
   border-radius: 7px;
@@ -44,8 +43,7 @@
 }
 
 .search-button,
-.home-button,
-.favourites-button:hover {
+.home-button:hover {
   background: rgb(253, 40, 40);
   box-shadow: 0 0 30px 5px rgb(196, 0, 0);
   -webkit-transition: all 0.2s ease-out;
@@ -54,16 +52,14 @@
 }
 
 .search-button,
-.home-button,
-.favourites-button:hover::before {
+.home-button:hover::before {
   -webkit-animation: sh02 0.5s 0s linear;
   -moz-animation: sh02 0.5s 0s linear;
   animation: sh02 0.5s 0s linear;
 }
 
 .search-button,
-.home-button,
-.favourites-button::before {
+.home-button::before {
   content: "";
   display: block;
   width: 0px;
@@ -98,8 +94,7 @@
 }
 
 .search-button,
-.home-button,
-.favourites-button:active {
+.home-button:active {
   box-shadow: 0 0 0 0 transparent;
   -webkit-transition: box-shadow 0.2s ease-in;
   -moz-transition: box-shadow 0.2s ease-in;
