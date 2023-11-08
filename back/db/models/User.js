@@ -32,6 +32,9 @@ Users.init(
       type: S.STRING,
       allowNull: false,
     },
+    favourites: {
+      type: S.STRING,
+    },
     salt: {
       type: S.STRING,
     },
