@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Navbar from "./Navbar";
 import Grid from "./Grid";
 import { useLocation } from "react-router";
+import Navbar from "../commons/Navbar";
 
 const Main = () => {
   const location = useLocation();

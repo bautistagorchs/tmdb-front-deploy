@@ -23,6 +23,7 @@ const Grid = () => {
         setTrendingMovies(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     axios
@@ -31,6 +32,7 @@ const Grid = () => {
         setTrendingTvShows(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -40,6 +42,7 @@ const Grid = () => {
         setAiringToday(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     axios
@@ -51,6 +54,7 @@ const Grid = () => {
         setActionMovies(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     axios
@@ -62,6 +66,7 @@ const Grid = () => {
         setAnimationMovies(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

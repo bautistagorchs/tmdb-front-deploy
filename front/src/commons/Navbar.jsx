@@ -13,7 +13,7 @@ const Navbar = () => {
     navigate("/search");
   };
   const handleKeyPress = (e) => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       dispatch(
         setSearch({ movieResult: e.target.value, tvResult: e.target.value })
       );

@@ -3,9 +3,9 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
 const SearchCard = ({ search }) => {
-  const truncate = (overview) => {
-    return overview.slice(0, 110) + "...";
-  };
+  // const truncate = (overview) => {
+  //   return overview.slice(0, 110) + "...";
+  // };
   return (
     <div className="parent">
       {search.length &&
@@ -15,12 +15,13 @@ const SearchCard = ({ search }) => {
               {content.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${content.poster_path}`}
+                  alt="Movie portrait"
                   className="img-front"
                 />
               ) : (
                 <img
                   src="https://i.ibb.co/FBZ0fKd/no-Picture-Available.jpg"
-                  alt="No Picture Available"
+                  alt="Movie portrait"
                   className="img-front"
                 />
               )}
@@ -41,13 +42,3 @@ const SearchCard = ({ search }) => {
 };
 
 export default SearchCard;
-{
-  /* <p>
-          {content.overview
-            ? truncate(content.overview)
-            : "No description available, I guess you will have to watch it!"}
-          </p> */
-}
-{
-  /* <p>{content.title || content.name}</p> */
-}

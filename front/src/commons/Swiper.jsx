@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Scrollbar } from "swiper/core";
+import SwiperCore, { Navigation } from "swiper/core";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
@@ -8,17 +8,10 @@ const Card = ({ trending }) => {
   const truncate = (overview) => {
     return overview.slice(0, 110) + "...";
   };
-  SwiperCore.use([Navigation, Scrollbar]);
-
+  SwiperCore.use([Navigation]);
+  // console.log(singleMovie);
   return (
-    <Swiper
-      spaceBetween={10}
-      slidesPerView={7}
-      loop={true}
-      navigation={true}
-      // keyboard={true}
-      // scrollbar={{ draggable: true }}
-    >
+    <Swiper spaceBetween={10} slidesPerView={7} loop={true} navigation={true}>
       {trending.length &&
         trending.map((content, i) => (
           <SwiperSlide className="SwiperSlide" key={i}>

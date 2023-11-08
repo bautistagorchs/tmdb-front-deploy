@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Header from "../commons/Header";
-import Swiper from "../commons/Swiper";
-import Navbar from "./Navbar";
+import Navbar from "../commons/Navbar";
 import SearchCard from "../commons/SearchCard";
 import { useSelector } from "react-redux";
 
@@ -38,6 +37,7 @@ const Search = () => {
         setSearchMovie(response.data.results);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.movieResult]);
   useEffect(() => {
     axios
@@ -45,12 +45,11 @@ const Search = () => {
         `https://api.themoviedb.org/3/search/tv?query=${search.tvResult || ""}`,
         options
       )
-      .then((response) => {
-        setSearchTvShow(response.data.results);
-      })
+      .then((response) => setSearchTvShow(response.data.results))
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.tvResult]);
-  console.log(searchTvShow);
+  // console.log(searchTvShow);
   return (
     <div>
       <Navbar />

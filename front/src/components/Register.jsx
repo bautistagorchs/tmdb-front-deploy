@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-//import { Link } from "react-router-dom";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const initialState = { email: "", password: "", name: "", last_name: "" };
   const navigate = useNavigate();
   const [invalidEmail, setInvalidEmail] = useState(null);
+  // eslint-disable-next-line
   const [user, setUser] = useState({});
   const [inputData, setInputData] = useState(initialState);
 

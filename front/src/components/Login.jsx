@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch /*useSelector*/ } from "react-redux";
-import { Navigate, useLocation, useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
 import { setUser } from "../store/user";
 
 const Login = () => {
@@ -37,7 +37,7 @@ const Login = () => {
       .post("http://localhost:3001/api/users/login", inputData, {
         withCredentials: true,
       })
-      .then(() => navigate("/" + "main"))
+      .then(() => navigate("/main"))
       .catch((error) => {
         setError("email or passsword incorrect");
         console.error(error);

@@ -1,0 +1,16 @@
+.single-movie {
+  background-color: rgb(39, 33, 33);
+}
+.single-movie-container {
+  height: 75vh;
+  margin: 0 4%;
+  border: 2px solid pink;
+  .img-container {
+    width: 40%;
+    border: 2px solid lightgreen;
+  }
+}
+// .movie-container {
+//   height: 60vh;
+//   border: 2px solid lightblue;
+// }
