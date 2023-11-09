@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./store/user";
 import Search from "./components/Search";
 import SingleMovie from "./commons/SingleMovie";
-// import { AnimatePresence } from "framer-motion/dist/framer-motion";
+// import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,12 +26,12 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    // <AnimatePresence>
+    // <AnimatePresence mode="wait">
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/main" element={<Main />} />
       {/* <Route path="/movies" element={<Movies />} /> */}
-      <Route path="/movies/single/:id" element={<SingleMovie />} />
+      <Route path="/:media_type/single/:id" element={<SingleMovie />} />
       <Route path="/users/register" element={<Register />} />
       <Route path="/users/login" element={<Login />} />
       <Route path="/search" element={<Search />} />

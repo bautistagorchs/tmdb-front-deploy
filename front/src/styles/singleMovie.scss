@@ -7,7 +7,7 @@
   background-color: rgb(39, 33, 33);
 }
 .single-movie-container {
-  margin-top: 4%;
+  padding-top: 1.5%;
   height: 60vh;
   margin: 0 4%;
 }
@@ -52,4 +52,13 @@
 }
 .div3 {
   grid-area: 2 / 2 / 3 / 4;
+}
+.tag-a-trailer:link,
+.tag-a-trailer:visited,
+.tag-a-trailer:active {
+  text-decoration: none;
+  color: #fff;
+}
+#button-trailer {
+  margin-left: 5%;
 }

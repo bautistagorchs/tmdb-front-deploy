@@ -8,7 +8,7 @@ const SearchCard = ({ search }) => {
     return overview.slice(0, 110) + "...";
   };
   return (
-    <div className="parent">
+    <div id="search-page" className="parent">
       {search.length &&
         search.map((content, i) => (
           <Link to={`/movies/single/${content.id}`}>

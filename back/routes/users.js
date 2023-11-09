@@ -26,11 +26,15 @@ router.post("/login", (req, res) => {
   });
 });
 router.post("/favourites", (req, res) => {
-  console.log(req.body);
   User.findOne({ where: { email: req.body.email } })
     .then((user) => {
       if (user) {
-        user.dataValues.favourites.push(req.body.newFavourite);
+        const existingId = user.dataValues.favourites.indexOf(
+          req.body.newFavourite
+        );
+        existingId !== -1
+          ? user.dataValues.favourites.splice(existingId, 1)
+          : user.dataValues.favourites.push(req.body.newFavourite);
         User.update(
           { favourites: user.dataValues.favourites },
           {
@@ -41,6 +45,22 @@ router.post("/favourites", (req, res) => {
       } else res.status(404).send("user not found");
     })
     .catch((err) => console.error(err));
+});
+
+router.get("/favourites/exist/:email/:id", (req, res, next) => {
+  User.findOne({ where: { email: req.params.email } })
+    .then((user) => {
+      if (user && user.dataValues.favourites) {
+        if (user.dataValues.favourites.includes(parseInt(req.params.id))) {
+          res.sendStatus(200);
+        } else {
+          next();
+        }
+      } else {
+        res.sendStatus(404);
+      }
+    })
+    .catch((err) => res.sendStatus(500));
 });
 
 router.post("/logout", validateAuth, (req, res) => {

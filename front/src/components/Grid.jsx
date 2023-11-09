@@ -10,6 +10,9 @@ const Grid = () => {
   const [actionMovies, setActionMovies] = useState([]);
   const [animationMovies, setAnimationMovies] = useState([]);
   const options = {
+    // params: {
+    //   page: 4,
+    // },
     headers: {
       accept: "application/json",
       Authorization:
@@ -59,7 +62,7 @@ const Grid = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?with_genres=16",
+        "https://api.themoviedb.org/3/discover/movie?with_genres=35",
         options
       )
       .then((response) => {
@@ -72,15 +75,15 @@ const Grid = () => {
   return (
     <div>
       <Header title={"Trending Movies"} />
-      <Swiper trending={trendingMovies} />
+      <Swiper content={trendingMovies} />
       <Header title={"Most watched Tv Shows"} />
-      <Swiper trending={trendingTvShows} />
+      <Swiper content={trendingTvShows} />
       <Header title={"Tv Shows Airing Today"} />
-      <Swiper trending={airingToday} />
+      <Swiper content={airingToday} />
       <Header title={"Action Movies"} />
-      <Swiper trending={actionMovies} />
-      <Header title={"Animation Movies"} />
-      <Swiper trending={animationMovies} />
+      <Swiper content={actionMovies} />
+      <Header title={"Comedy Movies"} />
+      <Swiper content={animationMovies} />
     </div>
   );
 };

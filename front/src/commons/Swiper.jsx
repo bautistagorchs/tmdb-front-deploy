@@ -5,19 +5,19 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ trending }) => {
+const Card = ({ content }) => {
   const truncate = (overview) => {
     return overview.slice(0, 110) + "...";
   };
   SwiperCore.use([Navigation]);
-  // console.log(singleMovie);
+  // console.log(content);
 
   return (
     <Swiper spaceBetween={10} slidesPerView={7} loop={true} navigation={true}>
-      {trending.length &&
-        trending.map((content, i) => (
+      {content.length &&
+        content.map((content, i) => (
           <SwiperSlide className="SwiperSlide" key={i}>
-            <Link to={`/movies/single/${content.id}`}>
+            <Link to={`/${content.media_type}/single/${content.id}`}>
               <div className="img-container">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${content.poster_path}`}
