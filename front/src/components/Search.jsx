@@ -53,11 +53,11 @@ const Search = () => {
   return (
     <div>
       <Navbar />
-      <Header title={`Results for: ${search.movieResult || "..."}`} />
+      <Header title={`Movies: ${search.movieResult || "..."}`} />
       <SearchCard search={searchMovie} />
       <Header
         title={
-          searchTvShow.length ? `Results for: ${search.tvResult || "..."}` : ""
+          searchTvShow.length ? `Tv Shows : ${search.tvResult || "..."}` : ""
         }
       />
       <SearchCard search={searchTvShow} />

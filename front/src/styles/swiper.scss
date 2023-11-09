@@ -23,19 +23,19 @@
 /* Aplica una rotación de 0 grados (sin rotación) en el eje Y a las imágenes */
 .SwiperSlide img {
   transform: rotateY(0deg);
-  transition: filter 0.9s ease; /* Agrega una transición suave para la rotación */
+  transition: filter 0.8s ease; /* Agrega una transición suave para la rotación */
   filter: brightness(1); /* Mantiene la imagen con brillo completo */
   position: relative; /* Permite posicionar elementos secundarios */
 }
 /* Oculta el elemento con la clase 'img-back' de forma predeterminada */
 .SwiperSlide .img-back {
   opacity: 0;
-  transition: opacity 3s ease; /* Agrega una transición suave para la opacidad */
+  transition: opacity 2s ease; /* Agrega una transición suave para la opacidad */
   position: absolute; /* Coloca el elemento sobre la imagen */
   top: 0; /* Ajusta la posición superior para que esté encima de la imagen */
   left: 0; /* Ajusta la posición izquierda para que esté encima de la imagen */
   p {
-    font-size: 0.9rem;
+    font-size: 95%;
     text-align: center;
     padding-top: 87%;
   }
