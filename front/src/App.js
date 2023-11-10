@@ -10,7 +10,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/user";
 import Search from "./components/Search";
-import SingleMovie from "./commons/SingleMovie";
+import SingleMovie from "./components/SingleMovie";
+
 // import { AnimatePresence } from "framer-motion";
 
 const App = () => {

@@ -49,7 +49,6 @@ const Search = () => {
       .catch((err) => console.error(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.tvResult]);
-  // console.log(searchTvShow);
   return (
     <div>
       <Navbar />
