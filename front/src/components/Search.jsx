@@ -5,6 +5,7 @@ import Header from "../commons/Header";
 import Navbar from "../commons/Navbar";
 import SearchCard from "../commons/SearchCard";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion/dist/framer-motion";
 
 const Search = () => {
   const search = useSelector((state) => state.search);
@@ -50,7 +51,16 @@ const Search = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search.tvResult]);
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.5 }}
+      transition={{
+        duration: 0.8,
+        // delay: 0.5,
+        // ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
       <Navbar />
       <Header title={`Movies found for: "${search.movieResult || "..."}"`} />
       <hr />
@@ -62,7 +72,7 @@ const Search = () => {
       )}{" "}
       {searchTvShow.length && <hr />}
       <SearchCard search={searchTvShow} />
-    </div>
+    </motion.div>
   );
 };
 

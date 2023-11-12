@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { motion } from "framer-motion/dist/framer-motion";
 
 const Login = () => {
   const initialState = { email: "", password: "", name: "", last_name: "" };
@@ -34,51 +35,61 @@ const Login = () => {
   };
   document.body.classList.add("loginPage");
   return (
-    <div className="login-box">
-      <h1>Hey, Welcome!</h1>
-      <h3>Give us your data and we"ll show you movies!</h3>
-      <form>
-        <div className="user-box">
-          <input type="text" name="email" required="" onChange={inputValue} />
-          <label>Email</label>
-        </div>
-        <div className="user-box">
-          <input type="text" name="name" required="" onChange={inputValue} />
-          <label>Name</label>
-        </div>
-        <div className="user-box">
-          <input
-            type="text"
-            name="last_name"
-            required=""
-            onChange={inputValue}
-          />
-          <label>Last name</label>
-        </div>
-        <div className="user-box">
-          <input
-            type="password"
-            name="password"
-            required=""
-            onChange={inputValue}
-          />
-          <label>Password</label>
-        </div>
-        <div className="user-box">{invalidEmail && <p>{invalidEmail}</p>} </div>
-        <center onClick={handleSubmit}>
-          {/* ASK HERE! */}
-          <a href="/users/register">
-            SIGN UP
-            <span></span>
-          </a>
-        </center>
-      </form>
-      <h4>Already have an account?</h4>
-      {/* ASK HERE! */}
-      <a className="tag-a-register-login" href="/users/login">
-        Sign In here!
-      </a>
-    </div>
+    <motion.div
+      className="login-box"
+      // initial={{ opacity: 0, y: -50 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // exit={{ opacity: 0, y: 50 }}
+      // transition={{ duration: 0.6 }}
+    >
+      <div>
+        <h1>Hey, Welcome!</h1>
+        <h3>Give us your data and we"ll show you movies!</h3>
+        <form>
+          <div className="user-box">
+            <input type="text" name="email" required="" onChange={inputValue} />
+            <label>Email</label>
+          </div>
+          <div className="user-box">
+            <input type="text" name="name" required="" onChange={inputValue} />
+            <label>Name</label>
+          </div>
+          <div className="user-box">
+            <input
+              type="text"
+              name="last_name"
+              required=""
+              onChange={inputValue}
+            />
+            <label>Last name</label>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              name="password"
+              required=""
+              onChange={inputValue}
+            />
+            <label>Password</label>
+          </div>
+          <div className="user-box">
+            {invalidEmail && <p>{invalidEmail}</p>}{" "}
+          </div>
+          <center onClick={handleSubmit}>
+            {/* ASK HERE! */}
+            <a href="/users/register">
+              SIGN UP
+              <span></span>
+            </a>
+          </center>
+        </form>
+        <h4>Already have an account?</h4>
+        {/* ASK HERE! */}
+        <a className="tag-a-register-login" href="/users/login">
+          Sign In here!
+        </a>
+      </div>
+    </motion.div>
   );
 };
 

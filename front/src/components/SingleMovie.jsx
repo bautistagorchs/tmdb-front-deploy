@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SingleMovieCard from "../commons/SingleMovieCard";
 import Navbar from "../commons/Navbar";
 import { useLocation, useParams } from "react-router";
+import { motion } from "framer-motion/dist/framer-motion";
 
 const SingleMovie = () => {
   //styles
@@ -17,10 +18,16 @@ const SingleMovie = () => {
   }, [location.pathname]);
 
   return (
-    <div className="div-container-single-movie-page">
+    <motion.div
+      className="div-container-single-movie-page"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.6 }}
+    >
       <Navbar />
       <SingleMovieCard />
-    </div>
+    </motion.div>
   );
 };
 

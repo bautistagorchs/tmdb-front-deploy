@@ -10,67 +10,45 @@ const Grid = () => {
   const [actionMovies, setActionMovies] = useState([]);
   const [animationMovies, setAnimationMovies] = useState([]);
   const options = {
-    // params: {
-    //   page: 4,
-    // },
     headers: {
       accept: "application/json",
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTBiM2EwNDZhYTBmMDc2OWJmZjVkYjAzZjQxOGY5MCIsInN1YiI6IjY1M2ZiOWNmMTA5Y2QwMDEwYjA0ZDBmNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wzku16fHNckt9N_jxJD8CVMYvcJwQqvohN8BD26tfxA",
     },
   };
-  useEffect(() => {
+  const allRequestsToAPI = [
+    {
+      url: "https://api.themoviedb.org/3/trending/movie/day",
+      setInfo: setTrendingMovies,
+    },
+    {
+      url: "https://api.themoviedb.org/3/trending/tv/day",
+      setInfo: setTrendingTvShows,
+    },
+    {
+      url: "https://api.themoviedb.org/3/tv/airing_today",
+      setInfo: setAiringToday,
+    },
+    {
+      url: "https://api.themoviedb.org/3/discover/movie?with_genres=action",
+      setInfo: setActionMovies,
+    },
+    {
+      url: "https://api.themoviedb.org/3/discover/movie?with_genres=35",
+      setInfo: setAnimationMovies,
+    },
+  ];
+  const requestToAPI = (url, options, setData) => {
     axios
-      .get("https://api.themoviedb.org/3/trending/movie/day", options)
-      .then((response) => {
-        setTrendingMovies(response.data.results);
-      })
+      .get(url, options)
+      .then((response) => setData(response.data.results))
       .catch((err) => console.error(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
   useEffect(() => {
-    axios
-      .get("https://api.themoviedb.org/3/trending/tv/day", options)
-      .then((response) => {
-        setTrendingTvShows(response.data.results);
-      })
-      .catch((err) => console.error(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("https://api.themoviedb.org/3/tv/airing_today", options)
-      .then((response) => {
-        setAiringToday(response.data.results);
-      })
-      .catch((err) => console.error(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?with_genres=action",
-        options
-      )
-      .then((response) => {
-        setActionMovies(response.data.results);
-      })
-      .catch((err) => console.error(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?with_genres=35",
-        options
-      )
-      .then((response) => {
-        setAnimationMovies(response.data.results);
-      })
-      .catch((err) => console.error(err));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    allRequestsToAPI.map((element) =>
+      requestToAPI(element.url, options, element.setInfo)
+    );
+  });
 
   return (
     <div>

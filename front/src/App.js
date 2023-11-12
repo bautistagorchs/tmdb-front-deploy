@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navigate, Routes } from "react-router";
+import { Navigate, Routes, useLocation } from "react-router";
 import { Route } from "react-router-dom";
 import "./styles/index.scss";
 import Main from "./components/Main";
@@ -11,12 +11,11 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./store/user";
 import Search from "./components/Search";
 import SingleMovie from "./components/SingleMovie";
-
-// import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion/dist/framer-motion";
 
 const App = () => {
   const dispatch = useDispatch();
-  // const location = useLocation();
+  const location = useLocation();
   useEffect(() => {
     axios
       .get("http://localhost:3001/api/users/me", {
@@ -27,18 +26,17 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    // <AnimatePresence mode="wait">
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/main" element={<Main />} />
-      {/* <Route path="/movies" element={<Movies />} /> */}
-      <Route path="/:media_type/single/:id" element={<SingleMovie />} />
-      <Route path="/users/register" element={<Register />} />
-      <Route path="/users/login" element={<Login />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-    // </AnimatePresence>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Index />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/:media_type/single/:id" element={<SingleMovie />} />
+        <Route path="/users/register" element={<Register />} />
+        <Route path="/users/login" element={<Login />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 

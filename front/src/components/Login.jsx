@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { setUser } from "../store/user";
+import { motion } from "framer-motion/dist/framer-motion";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -48,7 +49,13 @@ const Login = () => {
   };
 
   return (
-    <div className="login-box">
+    <motion.div
+      className="login-box"
+      // initial={{ opacity: 0, y: -50 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // exit={{ opacity: 0, y: 50 }}
+      // transition={{ duration: 0.6 }}
+    >
       <h1>Hey, Welcome back!</h1>
       <form>
         <div className="user-box">
@@ -84,7 +91,7 @@ const Login = () => {
       <a className="tag-a-register-login" href="/users/register">
         Sign Up here!
       </a>
-    </div>
+    </motion.div>
   );
 };
 
