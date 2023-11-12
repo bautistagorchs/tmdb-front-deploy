@@ -7,7 +7,7 @@
   background-color: rgb(39, 33, 33);
 }
 .single-movie-container {
-  padding-top: 1.5%;
+  padding-top: 0.5%;
   height: 60vh;
   margin: 0 4%;
 }
@@ -32,7 +32,7 @@
     margin-bottom: 0px;
   }
   h2 {
-    margin-top: 4px;
+    margin-top: 10px;
     letter-spacing: 3px;
     font-style: italic;
     font-weight: 100;
@@ -61,4 +61,7 @@
 }
 #button-trailer {
   margin-left: 5%;
+}
+#actor-birth {
+  margin-top: -12px;
 }

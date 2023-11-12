@@ -12,6 +12,7 @@ import { setUser } from "./store/user";
 import Search from "./components/Search";
 import SingleMovie from "./components/SingleMovie";
 import { AnimatePresence } from "framer-motion/dist/framer-motion";
+import SingleActor from "./components/SingleActor";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/" element={<Index />} />
         <Route path="/main" element={<Main />} />
         <Route path="/:media_type/single/:id" element={<SingleMovie />} />
+        <Route path="/actor/single/:id" element={<SingleActor />} />
         <Route path="/users/register" element={<Register />} />
         <Route path="/users/login" element={<Login />} />
         <Route path="/search" element={<Search />} />

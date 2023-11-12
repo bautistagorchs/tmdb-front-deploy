@@ -43,9 +43,8 @@ const Navbar = () => {
             Home
           </button>
         </Link>
+        {/* <Dropdown /> */}
       </div>
-
-      {/* <div> */}
 
       <div class="textInputWrapper">
         <input

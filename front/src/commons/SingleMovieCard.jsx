@@ -11,6 +11,7 @@ const SingleMovieCard = () => {
   const [existingFavourite, setExistingFavourite] =
     useState("Add to favourites");
 
+  console.log(currentMovie);
   const handleClickFavourites = () => {
     user.email
       ? axios
