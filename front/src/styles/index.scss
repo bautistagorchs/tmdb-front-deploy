@@ -38,9 +38,9 @@ body {
 }
 .index {
   position: relative;
-  margin-top: 15%;
-  height: 43vh;
-  width: 105vh;
+  margin-top: 12%;
+  height: 55vh;
+  width: 115vh;
   background: rgba(36, 29, 29, 0.987);
   color: white;
   border-radius: 20px;
@@ -54,11 +54,17 @@ body {
     margin-top: 5%;
     // font-family: "Kanit", sans-serif;
     font-family: "Geologica", sans-serif;
-    letter-spacing: 2px;
-    // text-decoration: underline;
+    font-size: 6rem;
+    letter-spacing: 18px;
+    text-decoration: underline;
     color: #f31515;
     text-transform: uppercase;
     margin-bottom: 7px;
+    transition: transform 0.7s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
   h2 {
     // font-family: "Kanit", sans-serif;
@@ -66,6 +72,18 @@ body {
     font-weight: 400;
     color: #ffffff;
     margin-bottom: -2px;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin-top: 7%;
+    // transition: all 1s ease;
+    filter: blur(2.7px);
+    opacity: 0.8;
+    transition: filter 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    &:hover {
+      // transform: translateY(-20px);
+      filter: blur(0px);
+      opacity: 1;
+    }
   }
   h4 {
     color: #ffffff;
@@ -74,14 +92,10 @@ body {
   }
 }
 
-/*bg*/
-/*txt*/
-/*success*/
 .buttons {
   display: flex;
-  justify-content: center;
-  top: 20px;
-  left: 20px;
+  justify-content: space-evenly;
+  margin-top: 4.5%;
 }
 
 .buttons button {

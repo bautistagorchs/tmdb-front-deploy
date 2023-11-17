@@ -21,9 +21,9 @@ const Index = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="index-content">
-        <h1>Hey there!</h1>
-        <h2> We are happy to have here!</h2>
-        <h4>Ready to enjoy the best movies in the best site?</h4>
+        <h1>TMDB</h1>
+        {/* <h2> We are happy to have here!</h2> */}
+        <h2>Ready to enjoy the best movies in the best site?</h2>
       </div>
       <div className="buttons">
         <Link to="/users/register">
