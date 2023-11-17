@@ -17,8 +17,9 @@
     color: #f31515;
     font-weight: 600;
     text-align: center;
-    margin-top: 0;
+    margin-top: 5%;
     padding-bottom: 1.5rem;
+    letter-spacing: 1px;
     // text-decoration: underline;
   }
   h4,
@@ -44,7 +45,8 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
+  width: 58vh;
+  height: 52vh;
   padding: 40px;
   transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
@@ -52,14 +54,6 @@ p {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   z-index: 2;
-  h1 {
-    color: #f31515;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 0;
-    // padding-bottom: 0.5rem;
-    // text-decoration: underline;
-  }
   h3 {
     color: white;
     text-align: center;
@@ -107,14 +101,14 @@ p {
 .login-box form a {
   position: relative;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 50px;
   color: #ffffff;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 40px;
+  margin: 4% 0px;
   letter-spacing: 4px;
 }
 
