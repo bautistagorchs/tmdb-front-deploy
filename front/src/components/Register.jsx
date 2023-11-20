@@ -48,11 +48,11 @@ const Login = () => {
         <form>
           <div className="user-box">
             <input type="text" name="email" required="" onChange={inputValue} />
-            <label>Email</label>
+            <label className="placeholder-form-login">Email</label>
           </div>
           <div className="user-box">
             <input type="text" name="name" required="" onChange={inputValue} />
-            <label>Name</label>
+            <label className="placeholder-form-login">Name</label>
           </div>
           <div className="user-box">
             <input
@@ -61,7 +61,7 @@ const Login = () => {
               required=""
               onChange={inputValue}
             />
-            <label>Last name</label>
+            <label className="placeholder-form-login">Last name</label>
           </div>
           <div className="user-box">
             <input
@@ -70,7 +70,7 @@ const Login = () => {
               required=""
               onChange={inputValue}
             />
-            <label>Password</label>
+            <label className="placeholder-form-login">Password</label>
           </div>
           <div className="user-box">
             {invalidEmail && <p>{invalidEmail}</p>}{" "}

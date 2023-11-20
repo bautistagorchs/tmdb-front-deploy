@@ -30,6 +30,7 @@ const App = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
+        <Route path="/index" element={<Index />} />
         <Route path="/main" element={<Main />} />
         <Route path="/:media_type/single/:id" element={<SingleMovie />} />
         <Route path="/actor/single/:id" element={<SingleActor />} />

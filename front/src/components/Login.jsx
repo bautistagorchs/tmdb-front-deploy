@@ -33,6 +33,9 @@ const Login = () => {
     });
   };
   const handleSubmit = (e) => {
+    if ((inputData.password || inputData.email) === "") {
+      return setError("you have to enter your email and password");
+    }
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/login", inputData, {
@@ -47,7 +50,9 @@ const Login = () => {
     dispatch(setUser(email));
     setInputData({ password: "", email: "" });
   };
-
+  const labelUp = () => {
+    return document.querySelectorAll("label").classList.add("label-up");
+  };
   return (
     <motion.div
       className="login-box"
@@ -57,16 +62,12 @@ const Login = () => {
       // transition={{ duration: 0.6 }}
     >
       <h1>Hey, Welcome back!</h1>
-      <form>
+      <form className="form-container">
         <div className="user-box">
-          <input
-            type="text"
-            name="email"
-            required=""
-            onChange={inputValue}
-            // placeholder="email"
-          />
-          <label>Email</label>
+          <input type="text" name="email" required="" onChange={inputValue} />
+          <label className="placeholder-form-login" onKeyDown={labelUp}>
+            Email
+          </label>
         </div>
         <div className="user-box">
           <input
@@ -75,12 +76,12 @@ const Login = () => {
             required=""
             onChange={inputValue}
           />
-          <label>Password</label>
+          <label className="placeholder-form-login">Password</label>
         </div>
         <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
           {/* ASK HERE! */}
-          <a href="/users/login">
+          <a href="/">
             SIGN IN
             <span></span>
           </a>

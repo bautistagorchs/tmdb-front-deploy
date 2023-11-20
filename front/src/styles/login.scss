@@ -17,7 +17,7 @@
     color: #f31515;
     font-weight: 600;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 4%;
     padding-bottom: 1.5rem;
     letter-spacing: 1px;
     // text-decoration: underline;
@@ -26,7 +26,7 @@
   a {
     margin-top: 1.5rem;
     color: #fff;
-    letter-spacing: -0.5px;
+    letter-spacing: 1px;
   }
 }
 
@@ -39,15 +39,16 @@ p {
 }
 .tag-a-register-login {
   text-decoration: none;
+  transition: all 0.5s ease;
 }
 //  F    O    R    M
+
 .login-box {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 58vh;
-  height: 52vh;
-  padding: 40px;
+  width: 65vh;
+  padding: 3% 3%;
   transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
   box-sizing: border-box;
@@ -87,37 +88,44 @@ p {
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: 0.5s;
+  letter-spacing: 1px;
+  transition: 0.6s;
 }
 
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
-  top: -20px;
+  top: -22px;
   left: 0;
   color: #bdb8b8;
-  font-size: 12px;
+  font-size: 13px;
 }
-
+// .login-box .user-box input:focus ~ label {
+//   top: -22px;
+//   letter-spacing: 2px;
+// }
 .login-box form a {
   position: relative;
   display: inline-block;
-  padding: 10px 50px;
+  padding: 20px 60px;
+  // background-color: rgba(71, 39, 39, 0.5);
   color: #ffffff;
-  font-size: 16px;
+  font-size: 2vh;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: 0.5s;
+  transition: 0.6s;
   margin: 4% 0px;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  // border-radius: 25px;
 }
 
 .login-box a:hover {
   background: #f31515;
   color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #f31515, 0 0 12px #f31515, 0 0 25px #f31515,
-    0 0 50px #f31515;
+  border-radius: 12px;
+  box-shadow: 0 0 5px #f31515e3, 0 0 12px #f31515b9, 0 0 25px #f31515ab,
+    0 0 50px #f3151585;
+  transform: scale(1.05);
 }
 
 .login-box a span {

@@ -7,7 +7,10 @@ const Index = () => {
   const location = useLocation();
   //styles
   useEffect(() => {
-    document.body.classList.toggle("indexPage", location.pathname === "/");
+    document.body.classList.toggle(
+      "indexPage",
+      location.pathname === "/" || location.pathname === "/index"
+    );
     return () => {
       document.body.classList.remove("indexPage");
     };
