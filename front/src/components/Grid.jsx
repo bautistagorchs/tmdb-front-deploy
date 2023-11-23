@@ -101,7 +101,7 @@ const Grid = () => {
   //     requestToAPI(element.url, options, element.setInfo)
   //   );
   // });
-  console.log(popularPeople);
+  // console.log(popularPeople);
   return (
     <div>
       <Header title={"Trending Movies"} />

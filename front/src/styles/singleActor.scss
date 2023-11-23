@@ -1,0 +1,27 @@
+.single-actor-container {
+  padding-top: 0.5%;
+  height: 60vh;
+  margin: 0 4%;
+}
+.tabs-container {
+  height: 9%;
+  width: 22%;
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid salmon;
+}
+.button-tab {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+}
+.personal-information-container {
+  display: none;
+  z-index: -1;
+}
+.movies-from-actor-container {
+  // display: none;
+  z-index: 1;
+  transform: translateY(-150%);
+}
