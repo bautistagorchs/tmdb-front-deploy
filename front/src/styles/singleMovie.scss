@@ -1,14 +1,10 @@
 // @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300;1,400&display=swap");
 
-.div-container-single-movie-page {
-  height: 100vh;
-}
 .single-movie {
   background-color: rgb(39, 33, 33);
 }
 .single-movie-container {
   padding-top: 0.5%;
-  height: 60vh;
   margin: 0 4%;
 }
 
@@ -25,7 +21,7 @@
 .div1 {
   grid-area: 1 / 1 / 3 / 2;
 }
-.div2 {
+.div2 .smcdiv2 {
   grid-area: 1 / 2 / 2 / 4;
   h1 {
     font-size: 3rem;

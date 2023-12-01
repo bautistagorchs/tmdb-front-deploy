@@ -16,7 +16,7 @@ const Search = () => {
     return () => {
       document.body.classList.remove("main");
     };
-  }, [location.pathname]);
+  }, []);
   const [searchMovie, setSearchMovie] = useState([]);
   const [searchTvShow, setSearchTvShow] = useState([]);
   const options = {
@@ -54,23 +54,20 @@ const Search = () => {
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.5 }}
       transition={{
         duration: 0.8,
         // delay: 0.5,
-        // ease: [0, 0.71, 0.2, 1.01],
+        ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-      <Navbar />
-      <Header title={`Movies found for: "${search.movieResult || "..."}"`} />
-      <hr />
+      {/* <Navbar /> */}
+      <Header title={`Movies found for: ${search.movieResult || "..."}`} />
       <SearchCard search={searchMovie} />
       {searchTvShow.length ? (
-        <Header title={`Tv Shows found for: "${search.tvResult || "..."}"`} />
+        <Header title={`Tv Shows found for: ${search.tvResult || "..."}`} />
       ) : (
         ""
       )}{" "}
-      {searchTvShow.length && <hr />}
       <SearchCard search={searchTvShow} />
     </motion.div>
   );

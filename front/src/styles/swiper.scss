@@ -5,6 +5,20 @@
     color: white;
   }
 }
+.actor-name {
+  position: absolute;
+  width: 90%;
+  top: 80%;
+  left: 5%;
+  background: #e5282886;
+  border-radius: 10px;
+}
+.p-actor-name {
+  color: white;
+  margin: unset;
+  text-align: center;
+  padding: 2px 0px;
+}
 .swiper-container {
   width: 92%;
 }

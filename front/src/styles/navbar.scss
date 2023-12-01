@@ -1,27 +1,35 @@
 .navbar {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: rgb(39, 33, 33);
   height: 6rem;
-  width: 92%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-weight: 400;
   font-size: 2rem;
-  margin-top: 20px;
-  margin-left: 4%;
+  border-radius: 0 0px 16px 16px;
+  padding-top: 20px;
+  margin-bottom: 2vh;
+  box-shadow: 0px 2px 18px -1px rgb(255 0 0 / 40%);
 }
 .navbar-logout-div,
 .navbar-home-div {
-  width: 18%;
+  margin: 0 4%;
+  width: 17%;
   display: flex;
   align-content: center;
   // border: 2px solid pink;
   p {
     font-size: smaller;
-    padding-top: 3%;
+    color: #f51616;
   }
 }
 .navbar-logout-div {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .search-button,
 .home-button {

@@ -7,14 +7,16 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Index from "./components/Index";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import Search from "./components/Search";
 import SingleMovie from "./components/SingleMovie";
 import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import SingleActor from "./components/SingleActor";
+import Navbar from "./commons/Navbar";
 
 const App = () => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => {
@@ -28,6 +30,7 @@ const App = () => {
   }, []);
   return (
     <AnimatePresence mode="wait">
+      {user.email && <Navbar />}
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
         <Route path="/index" element={<Index />} />

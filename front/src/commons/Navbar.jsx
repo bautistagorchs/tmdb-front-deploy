@@ -13,11 +13,11 @@ const Navbar = () => {
     navigate("/search");
   };
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      dispatch(
-        setSearch({ movieResult: e.target.value, tvResult: e.target.value })
-      );
-    }
+    // if (e.key === "Enter") {
+    dispatch(
+      setSearch({ movieResult: e.target.value, tvResult: e.target.value })
+    );
+    // }
   };
   const handleLogoutClick = (e) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ const Navbar = () => {
           name="searchresult"
           id=""
           onClick={handleSearchClick}
-          onKeyDown={handleKeyPress}
+          onChange={handleKeyPress}
           type="input"
           className="textInput"
         />

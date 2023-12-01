@@ -1,6 +1,5 @@
 .loginPage {
-  background-image: url("https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg");
-  background-size: cover;
+  background-color: black;
   &::before {
     content: "";
     position: absolute;
@@ -13,6 +12,7 @@
   }
 }
 .login-box {
+  position: relative;
   h1 {
     color: #f31515;
     font-weight: 600;
@@ -20,7 +20,6 @@
     margin-top: 4%;
     padding-bottom: 1.5rem;
     letter-spacing: 1px;
-    // text-decoration: underline;
   }
   h4,
   a {
@@ -29,14 +28,35 @@
     letter-spacing: 1px;
   }
 }
-
-p {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  text-align: center;
-  color: #f31515;
-  letter-spacing: 0.8px;
+.title-and-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 19%;
+  left: 130%;
+  .h1-title-login {
+    all: unset;
+    font-size: 13rem;
+    color: #f31515;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 15px;
+  }
+  .h3-subtitle-login {
+    all: unset;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: -1vh 0 1vh 0;
+  }
+  .h4-subtitle-login {
+    all: unset;
+    color: #ffffff;
+    // margin-top: ;
+  }
 }
+
 .tag-a-register-login {
   text-decoration: none;
   transition: all 0.5s ease;
@@ -44,16 +64,21 @@ p {
 //  F    O    R    M
 
 .login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 65vh;
+  left: 21%;
+  width: 87vh;
+  height: 100vh;
   padding: 3% 3%;
   transform: translate(-50%, -50%);
   background: rgba(24, 20, 20, 0.987);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  border-radius: 0px 20px 50px 0px;
+  border-radius: 0rem 5rem 18rem 0rem;
   z-index: 2;
   h3 {
     color: white;
@@ -63,9 +88,19 @@ p {
     margin-top: 0px;
   }
 }
+.register-content-container {
+  width: 73%;
+}
 
 .login-box .user-box {
   position: relative;
+  p {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-align: center;
+    color: #f31515;
+    letter-spacing: 0.8px;
+  }
 }
 
 .login-box .user-box input {
@@ -131,6 +166,9 @@ p {
 .login-box a span {
   position: absolute;
   display: block;
+}
+.form-container {
+  width: 40vh;
 }
 
 @keyframes btn-anim1 {

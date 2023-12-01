@@ -20,12 +20,19 @@ const SingleMovie = () => {
   return (
     <motion.div
       className="div-container-single-movie-page"
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+      // initial={{ opacity: 0, y: -50 }}
+      // animate={{ opacity: 1, y: 0 }}
+      // exit={{ opacity: 0, y: 50 }}
+      // transition={{ duration: 0.6 }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <SingleActorCard />
     </motion.div>
   );
