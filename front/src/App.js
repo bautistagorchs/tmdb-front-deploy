@@ -14,6 +14,7 @@ import SingleMovie from "./components/SingleMovie";
 import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import SingleActor from "./components/SingleActor";
 import Navbar from "./commons/Navbar";
+import Footer from "./commons/Footer";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <Footer />
     </AnimatePresence>
   );
 };

@@ -1,11 +1,10 @@
 import axios from "axios";
+import { motion } from "framer-motion/dist/framer-motion";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import Header from "../commons/Header";
-import Navbar from "../commons/Navbar";
 import SearchCard from "../commons/SearchCard";
-import { useSelector } from "react-redux";
-import { motion } from "framer-motion/dist/framer-motion";
 
 const Search = () => {
   const search = useSelector((state) => state.search);

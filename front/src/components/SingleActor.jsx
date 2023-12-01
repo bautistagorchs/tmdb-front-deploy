@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import Navbar from "../commons/Navbar";
-import { useLocation, useParams } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
+import React, { useEffect } from "react";
+import { useLocation, useParams } from "react-router";
 import SingleActorCard from "../commons/SingleActorCard";
 
 const SingleMovie = () => {

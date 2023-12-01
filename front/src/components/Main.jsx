@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import Grid from "./Grid";
-import { useLocation } from "react-router";
-import Navbar from "../commons/Navbar";
 import { motion } from "framer-motion/dist/framer-motion";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router";
+import Grid from "./Grid";
 
 const Main = () => {
   const location = useLocation();
