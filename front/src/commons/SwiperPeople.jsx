@@ -19,6 +19,11 @@ const SwiperPeople = ({ content }) => {
                   alt={content.name}
                   className="img-front-people"
                 />
+                <div className="actor-name">
+                  <p className="p-actor-name" style={{ color: "black" }}>
+                    {content.name}
+                  </p>
+                </div>
               </div>
             </Link>
           </SwiperSlide>

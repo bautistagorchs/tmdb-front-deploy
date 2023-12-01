@@ -15,16 +15,23 @@ const Main = () => {
   }, [location.pathname]);
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.5 }}
-      transition={{
-        duration: 0.8,
-        // delay: 0.5,
-        // ease: [0, 0.71, 0.2, 1.01],
-      }}
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: -800 }}
+      // exit={{ y: 700 }}
+      transition={{ duration: 0.7, ease: "ease", delay: 0.5 }}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      // initial={{ opacity: 0, scale: 0.5 }}
+      // animate={{ opacity: 1, scale: 1 }}
+      // exit={{ opacity: 0, scale: 0.5 }}
+      // transition={{
+      //   duration: 1,
+      // delay: 0.5,
+      // ease: [0, 0.71, 0.2, 1.01],
+      // }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <Grid />
     </motion.div>
   );

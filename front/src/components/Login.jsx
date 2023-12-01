@@ -56,11 +56,16 @@ const Login = () => {
   return (
     <motion.div
       className="login-box"
-      // initial={{ opacity: 0, y: -50 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // exit={{ opacity: 0, y: 50 }}
-      // transition={{ duration: 0.6 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
     >
+      <div className="title-and-info-container">
+        <h1 className="h1-title-login">TMDB</h1>
+        <h3 className="h3-subtitle-login">A project made by Bautista Gorchs</h3>
+        <h4 className="h4-subtitle-login">- Full-Stack developer -</h4>
+      </div>
       <h1>Hey, Welcome back!</h1>
       <form className="form-container">
         <div className="user-box">

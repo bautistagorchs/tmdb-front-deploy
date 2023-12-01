@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SingleMovieCard = () => {
   const user = useSelector((state) => state.user);
@@ -85,7 +86,7 @@ const SingleMovieCard = () => {
             alt=""
           />
         </div>
-        <div class="div2">
+        <div class="div2 smcdiv2">
           <h1>
             {currentMovie?.title}
             {currentMovie?.name}
@@ -106,7 +107,7 @@ const SingleMovieCard = () => {
           <button className="home-button" onClick={handleClickFavourites}>
             {existingFavourite}
           </button>
-          <button id="button-trailer" className="home-button">
+          {/* <button id="button-trailer" className="home-button">
             <a
               className="tag-a-trailer"
               href={`https://www.youtube.com/results?search_query=${
@@ -116,7 +117,19 @@ const SingleMovieCard = () => {
             >
               Watch Trailer
             </a>
-          </button>
+          </button> */}
+          <Link
+            target="blank"
+            to={`https://www.youtube.com/results?search_query=${
+              currentMovie?.name || currentMovie?.title
+            }+trailer`}
+          >
+            <button id="button-trailer" className="home-button">
+              <p className="tag-a-trailer" style={{ margin: "unset" }}>
+                Watch Trailer
+              </p>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

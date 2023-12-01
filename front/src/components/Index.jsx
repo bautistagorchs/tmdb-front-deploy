@@ -36,6 +36,7 @@ const Index = () => {
               data-start="good luck!"
               data-text="Sing Up!"
               data-title="First time?"
+              className="p-index-buttons"
             ></p>
           </button>
         </Link>
