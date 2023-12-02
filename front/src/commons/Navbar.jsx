@@ -17,11 +17,9 @@ const Navbar = () => {
     navigate("/search");
   };
   const handleKeyPress = (e) => {
-    // if (e.key === "Enter") {
     dispatch(
       setSearch({ movieResult: e.target.value, tvResult: e.target.value })
     );
-    // }
   };
   const handleLogoutClick = (e) => {
     e.preventDefault();
@@ -47,34 +45,33 @@ const Navbar = () => {
             Home
           </button>
         </Link>
-        {/* <Dropdown /> */}
-      </div>
-
-      <div class="textInputWrapper">
-        <input
-          placeholder="Search results..."
-          name="searchresult"
-          id=""
-          onClick={handleSearchClick}
-          onChange={handleKeyPress}
-          type="input"
-          className="textInput"
-        />
-      </div>
-      {user.name ? (
-        <div className="navbar-logout-div">
-          <p>Hey {user.name}!</p>
-          <Link to="/users/logout">
-            <button className="home-button" onClick={handleLogoutClick}>
-              Log out{" "}
-            </button>
-          </Link>
-        </div>
-      ) : (
-        <Link to="/users/login">
-          <button className="home-button">Log In</button>
+        <Link to="/main">
+          <button className="home-button" onClick={setSearchValueNull}>
+            Movies
+          </button>
         </Link>
-      )}
+        <Link to="/main">
+          <button className="home-button" onClick={setSearchValueNull}>
+            Tv Shows
+          </button>
+        </Link>
+      </div>
+      <div className="navbar-logout-div">
+        <div className="textInputWrapper">
+          <input
+            placeholder="Find a movie..."
+            name="searchresult"
+            id=""
+            onClick={handleSearchClick}
+            onChange={handleKeyPress}
+            type="input"
+            className="textInput"
+          />
+        </div>
+        <Link to="/account">
+          <button className="home-button">My Account </button>
+        </Link>
+      </div>
     </div>
   );
 };
