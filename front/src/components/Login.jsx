@@ -41,7 +41,7 @@ const Login = () => {
       .post("http://localhost:3001/api/users/login", inputData, {
         withCredentials: true,
       })
-      .then(() => navigate("/main"))
+      .then((res) => console.log(res))
       .catch((error) => {
         setError("email or passsword incorrect");
         console.error(error);

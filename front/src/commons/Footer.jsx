@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GithubIcon from "../utils/GithubIcon";
 import LinkedinIcon from "../utils/LinkedinIcon";
 import { Link } from "react-router-dom";
 import GmailIcon from "../utils/GmailIcon";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user.email) {
+      document.querySelector(".footer-container").style.display = "flex";
+    }
+  }, [user]);
   return (
     <div className="footer-container">
       <div className="footer-content-container">

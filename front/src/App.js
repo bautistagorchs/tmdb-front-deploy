@@ -15,6 +15,7 @@ import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import SingleActor from "./components/SingleActor";
 import Navbar from "./commons/Navbar";
 import Footer from "./commons/Footer";
+import Account from "./components/MyAccount";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -31,16 +32,17 @@ const App = () => {
   }, []);
   return (
     <AnimatePresence mode="wait">
-      {user.email && <Navbar />}
+      <Navbar />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
+        <Route path="/users/register" element={<Register />} />
+        <Route path="/users/login" element={<Login />} />
         <Route path="/index" element={<Index />} />
         <Route path="/main" element={<Main />} />
         <Route path="/:media_type/single/:id" element={<SingleMovie />} />
         <Route path="/actor/single/:id" element={<SingleActor />} />
-        <Route path="/users/register" element={<Register />} />
-        <Route path="/users/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/account" element={<Account />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

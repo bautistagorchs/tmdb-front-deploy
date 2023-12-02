@@ -25,7 +25,6 @@ const Index = () => {
     >
       <div className="index-content">
         <h1>TMDB</h1>
-        {/* <h2> We are happy to have here!</h2> */}
         <h2>Ready to enjoy the best movies in the best site?</h2>
       </div>
       <div className="buttons">

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { setSearch } from "../store/search";
 import axios from "axios";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    if (user.email) {
+      document.querySelector(".navbar").style.display = "flex";
+    }
+  }, [user]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const user = useSelector((state) => state.user);
   const handleSearchClick = () => {
     navigate("/search");
   };
