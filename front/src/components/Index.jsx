@@ -7,10 +7,7 @@ const Index = () => {
   const location = useLocation();
   //styles
   useEffect(() => {
-    document.body.classList.toggle(
-      "indexPage",
-      location.pathname === "/" || location.pathname === "/index"
-    );
+    document.body.classList.toggle("indexPage", location.pathname === "/");
     return () => {
       document.body.classList.remove("indexPage");
     };
@@ -28,7 +25,7 @@ const Index = () => {
         <h2>Ready to enjoy the best movies in the best site?</h2>
       </div>
       <div className="buttons">
-        <Link to="/users/register">
+        <Link to="/register">
           <button className="btn">
             <span></span>
             <p
@@ -39,7 +36,7 @@ const Index = () => {
             ></p>
           </button>
         </Link>
-        <Link to="/users/login">
+        <Link to="/login">
           <button className="btn">
             <span></span>
             <p

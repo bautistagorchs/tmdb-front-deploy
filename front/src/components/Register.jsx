@@ -20,11 +20,12 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(inputData);
     axios
       .post("http://localhost:3001/api/users/register", inputData)
       .then((response) => {
         setUser(response.data);
-        navigate("/users/login");
+        navigate("/login");
       })
       .catch(() =>
         setInvalidEmail(
@@ -82,7 +83,7 @@ const Login = () => {
           </div>
           <center onClick={handleSubmit}>
             {/* ASK HERE! */}
-            <a href="/users/register">
+            <a href="/register">
               SIGN UP
               <span></span>
             </a>
@@ -90,7 +91,7 @@ const Login = () => {
         </form>
         <h4>Already have an account?</h4>
         {/* ASK HERE! */}
-        <a className="tag-a-register-login" href="/users/login">
+        <a className="tag-a-register-login" href="/login">
           Sign In here!
         </a>
       </div>

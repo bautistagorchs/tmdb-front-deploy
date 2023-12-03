@@ -75,3 +75,49 @@
     transform: translateY(-10px);
   }
 }
+.favourites-container {
+  width: 70%;
+  height: 60vh;
+  margin-top: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: rgb(26, 23, 23);
+  box-shadow: 0px 0px 50px -20px #960505d2;
+  transition: all 0.8s ease;
+  &:hover {
+    transform: translateY(-30px) scale(1.02);
+    box-shadow: 0px 0px 50px 0px #960505;
+  }
+}
+.favourite-movies {
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.h1-favourite-title-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 35vh;
+  width: 30vh;
+  // border: 1px solid white;
+  position: absolute;
+}
+.h1-favourite-title {
+  text-align: center;
+  font-size: 2.4rem;
+  letter-spacing: 3px;
+  line-height: 90px;
+  #span1 {
+    color: #bd0606;
+    position: relative;
+    left: -30%;
+  }
+  #span2 {
+    position: relative;
+    right: -22%;
+  }
+}

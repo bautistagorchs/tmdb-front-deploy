@@ -12,7 +12,7 @@ const SingleActorCard = () => {
   const [currentActorMovies, setCurrentActorMovies] = useState();
   const [switchTabs, setSwitchTabs] = useState(1);
   const personalInformation = document.querySelector(
-    ".personal-information-container"
+    ".actor-personal-information-container"
   );
   const moviesFromActor = document.querySelector(
     ".movies-from-actor-container"
@@ -45,7 +45,7 @@ const SingleActorCard = () => {
       setCurrentActorMovies
     ); // eslint-disable-next-line
   }, [currentActor]);
-  console.log(currentActorMovies);
+  // console.log("$$$$$$$$$$$", currentActorMovies?.cast);
   return (
     <div className="single-actor-container">
       <div class="parent-single-movie">
@@ -83,7 +83,10 @@ const SingleActorCard = () => {
               </h2>
             </button>
           </div>
-          <div className="personal-information-container">
+          <div
+            className="actor-personal-information-container"
+            style={{ flexDirection: "column", marginTop: "5%" }}
+          >
             <h1>{currentActor?.name}</h1>
             <h2>Birth: {currentActor?.birthday}</h2>
             <h2 id="actor-birth">{currentActor?.place_of_birth}</h2>
@@ -92,7 +95,7 @@ const SingleActorCard = () => {
         </div>
         <div id="actor-movies" class="div3">
           <div className="movies-from-actor-container inactive">
-            <MovieCardGrid moviesByActor={currentActorMovies} />
+            <MovieCardGrid movies={currentActorMovies?.cast} />
           </div>
         </div>
       </div>

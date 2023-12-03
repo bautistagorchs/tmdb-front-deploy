@@ -11,10 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   //styles
   useEffect(() => {
-    document.body.classList.toggle(
-      "loginPage",
-      location.pathname === "/users/login"
-    );
+    document.body.classList.toggle("loginPage", location.pathname === "/login");
     return () => {
       document.body.classList.remove("loginPage");
     };
@@ -33,21 +30,26 @@ const Login = () => {
     });
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     if ((inputData.password || inputData.email) === "") {
       return setError("you have to enter your email and password");
     }
-    e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/login", inputData, {
         withCredentials: true,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.data.email) {
+          dispatch(setUser(res.data));
+          return navigate("/main");
+        }
+      })
       .catch((error) => {
         setError("email or passsword incorrect");
         console.error(error);
       });
-    const { email } = inputData;
-    dispatch(setUser(email));
+    // const { email } = inputData;
+    // dispatch(setUser(email));
     setInputData({ password: "", email: "" });
   };
   const labelUp = () => {
@@ -86,7 +88,7 @@ const Login = () => {
         <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
           {/* ASK HERE! */}
-          <a href="/">
+          <a>
             SIGN IN
             <span></span>
           </a>
@@ -94,7 +96,7 @@ const Login = () => {
       </form>
       <h4>Dont have an account yet?</h4>
       {/* ASK HERE! */}
-      <a className="tag-a-register-login" href="/users/register">
+      <a className="tag-a-register-login" href="/register">
         Sign Up here!
       </a>
     </motion.div>

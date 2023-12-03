@@ -25,6 +25,13 @@ router.post("/login", (req, res) => {
     });
   });
 });
+router.get("/favourites/:email", (req, res) => {
+  User.findOne({ where: { email: req.params.email } })
+    .then((user) => {
+      res.status(200).send(user.favourites);
+    })
+    .catch((err) => console.error(err));
+});
 router.post("/favourites", (req, res) => {
   User.findOne({ where: { email: req.body.email } })
     .then((user) => {
