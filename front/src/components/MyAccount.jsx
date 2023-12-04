@@ -78,7 +78,7 @@ const Account = () => {
             <div className="h1-favourite-title-container">
               <h1 className="h1-favourite-title">
                 <span id="span1">Your </span>favourite{" "}
-                <span id="span2">movies</span>
+                <span id="span2">content</span>
               </h1>
             </div>
             <MovieCardGrid movies={favouriteMovies} />
