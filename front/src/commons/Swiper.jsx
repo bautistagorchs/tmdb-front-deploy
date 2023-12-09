@@ -10,9 +10,8 @@ const Card = ({ content }) => {
     return overview.slice(0, 110) + "...";
   };
   SwiperCore.use([Navigation]);
-
   return (
-    <Swiper spaceBetween={10} slidesPerView={9} loop={true} navigation={true}>
+    <Swiper spaceBetween={10} slidesPerView={10} loop={true} navigation={true}>
       {content.length &&
         content.map((content, i) => (
           <SwiperSlide className="SwiperSlide" key={i}>
