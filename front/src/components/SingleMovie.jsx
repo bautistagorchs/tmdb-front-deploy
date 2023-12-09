@@ -26,13 +26,7 @@ const SingleMovie = () => {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01],
       }}
-      // transition={{ duration: 0.6 }}
-      // initial={{ opacity: 0, y: -50 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // exit={{ opacity: 0, y: 50 }}
-      // transition={{ duration: 0.6 }}
     >
-      {/* <Navbar /> */}
       <SingleMovieCard />
     </motion.div>
   );

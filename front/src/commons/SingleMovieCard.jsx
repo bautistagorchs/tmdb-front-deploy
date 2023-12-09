@@ -9,6 +9,10 @@ const SingleMovieCard = () => {
   const params = useParams();
   // eslint-disable-next-line
   const [currentMovie, setCurrentMovie] = useState();
+  console.log(
+    "🚀 ~ file: SingleMovieCard.jsx:12 ~ SingleMovieCard ~ currentMovie:",
+    currentMovie
+  );
   const [existingFavourite, setExistingFavourite] =
     useState("Add to favourites");
 

@@ -21,12 +21,14 @@ const Grid = () => {
   const requestToAPI = (url, options, setData) => {
     axios
       .get(url, options)
-      .then((response) => setData(response.data.results))
+      .then((response) =>
+        setData((prevResults) => [...prevResults, ...response.data.results])
+      )
       .catch((err) => console.error(err));
   };
   useEffect(() => {
     requestToAPI(
-      "https://api.themoviedb.org/3/trending/movie/day",
+      "https://api.themoviedb.org/3/trending/movie/day?&page=1",
       options,
       setTrendingMovies
     );
@@ -34,34 +36,25 @@ const Grid = () => {
   }, []);
   useEffect(() => {
     requestToAPI(
-      "https://api.themoviedb.org/3/trending/tv/day",
+      "https://api.themoviedb.org/3/trending/movie/day?&page=2",
+      options,
+      setTrendingMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/trending/tv/day?&page=1",
       options,
       setTrendingTvShows
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   useEffect(() => {
     requestToAPI(
-      "https://api.themoviedb.org/3/tv/airing_today",
+      "https://api.themoviedb.org/3/trending/tv/day?&page=2",
       options,
-      setAiringToday
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    requestToAPI(
-      "https://api.themoviedb.org/3/discover/movie?with_genres=action",
-      options,
-      setActionMovies
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
-    requestToAPI(
-      "https://api.themoviedb.org/3/discover/movie?with_genres=35",
-      options,
-      setAnimationMovies
+      setTrendingTvShows
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -73,35 +66,63 @@ const Grid = () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    requestToAPI(
+      `https://api.themoviedb.org/3/person/popular?language=en-US&page=2`,
+      options,
+      setPopularPeople
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/tv/airing_today?&page=1",
+      options,
+      setAiringToday
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/tv/airing_today?&page=2",
+      options,
+      setAiringToday
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/discover/movie?&with_genres=28&page=1",
+      options,
+      setActionMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/discover/movie?&with_genres=28&page=2",
+      options,
+      setActionMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/discover/movie?&with_genres=16&page=1",
+      options,
+      setAnimationMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    requestToAPI(
+      "https://api.themoviedb.org/3/discover/movie?&with_genres=16&page=2",
+      options,
+      setAnimationMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // const allRequestsToAPI = [
-  //   {
-  //     url: "https://api.themoviedb.org/3/trending/movie/day",
-  //     setInfo: setTrendingMovies,
-  //   },
-  //   {
-  //     url: "https://api.themoviedb.org/3/trending/tv/day",
-  //     setInfo: setTrendingTvShows,
-  //   },
-  //   {
-  //     url: "https://api.themoviedb.org/3/tv/airing_today",
-  //     setInfo: setAiringToday,
-  //   },
-  //   {
-  //     url: "https://api.themoviedb.org/3/discover/movie?with_genres=action",
-  //     setInfo: setActionMovies,
-  //   },
-  //   {
-  //     url: "https://api.themoviedb.org/3/discover/movie?with_genres=35",
-  //     setInfo: setAnimationMovies,
-  //   },
-  // ];
-  // useEffect(() => {
-  //   allRequestsToAPI.map((element) =>
-  //     requestToAPI(element.url, options, element.setInfo)
-  //   );
-  // });
-  // console.log(popularPeople);
   return (
     <div>
       <Header title={"Trending Movies"} />
@@ -114,7 +135,7 @@ const Grid = () => {
       <Swiper content={airingToday} />
       <Header title={"Action Movies"} />
       <Swiper content={actionMovies} />
-      <Header title={"Comedy Movies"} />
+      <Header title={"Animation Movies"} />
       <Swiper content={animationMovies} />
     </div>
   );
