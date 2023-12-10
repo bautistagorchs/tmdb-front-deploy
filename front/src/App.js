@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AnimatePresence } from "framer-motion/dist/framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, useLocation, useNavigate } from "react-router";
 import { Route } from "react-router-dom";
@@ -30,7 +30,7 @@ const App = () => {
       .then((user) => dispatch(setUser(user.data)))
       .catch((error) => console.error(error));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location, location.pathname]);
   // useEffect(() => {
   //   if (!user.email) {
   //     if (location.pathname === "/") return;
@@ -46,7 +46,7 @@ const App = () => {
   // }, [user, location.pathname]);
   return (
     <AnimatePresence mode="wait">
-      <Navbar />
+      {user.email && <Navbar />}
       <Routes location={location} key={location.pathname}>
         {!user.email && (
           <>

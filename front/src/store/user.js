@@ -2,7 +2,7 @@ import { createAction, createReducer } from "@reduxjs/toolkit";
 //import { message } from "antd";
 
 export const setUser = createAction("SET_USER");
-const initialState = {
+export const initialState = {
   email: null,
   name: null,
   last_name: null,

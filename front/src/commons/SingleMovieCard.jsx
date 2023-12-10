@@ -98,8 +98,9 @@ const SingleMovieCard = () => {
           <h2>{currentMovie?.tagline}</h2>
           <h3>
             Genres: {" - "}
-            {currentMovie && currentMovie.genres.map((e, i) => e.name + " - ")}
-            {"no genres available"}
+            {currentMovie?.genres
+              ? currentMovie.genres.map((e) => e.name + " - ")
+              : "no genres available"}
           </h3>
           <h3>
             Released on: {currentMovie?.release_date}{" "}
@@ -111,17 +112,6 @@ const SingleMovieCard = () => {
           <button className="home-button" onClick={handleClickFavourites}>
             {existingFavourite}
           </button>
-          {/* <button id="button-trailer" className="home-button">
-            <a
-              className="tag-a-trailer"
-              href={`https://www.youtube.com/results?search_query=${
-                currentMovie?.name || currentMovie?.title
-              }+trailer`}
-              target="blank"
-            >
-              Watch Trailer
-            </a>
-          </button> */}
           <Link
             target="blank"
             to={`https://www.youtube.com/results?search_query=${

@@ -11,12 +11,6 @@ const SingleActorCard = () => {
   const [currentActor, setCurrentActor] = useState();
   const [currentActorMovies, setCurrentActorMovies] = useState();
   const [switchTabs, setSwitchTabs] = useState(1);
-  const personalInformation = document.querySelector(
-    ".actor-personal-information-container"
-  );
-  const moviesFromActor = document.querySelector(
-    ".movies-from-actor-container"
-  );
   const params = useParams();
   const options = {
     headers: {
@@ -45,7 +39,6 @@ const SingleActorCard = () => {
       setCurrentActorMovies
     ); // eslint-disable-next-line
   }, [currentActor]);
-  // console.log("$$$$$$$$$$$", currentActorMovies?.cast);
   return (
     <div className="single-actor-container">
       <div class="parent-single-movie">
@@ -61,10 +54,6 @@ const SingleActorCard = () => {
               className="button-tab"
               onClick={() => {
                 setSwitchTabs(1);
-                personalInformation.classList.remove("inactive");
-                personalInformation.classList.add("active");
-                moviesFromActor.classList.remove("active");
-                moviesFromActor.classList.add("inactive");
               }}
             >
               <h2 className="h2-text-tab">Personal Information</h2>
@@ -73,9 +62,6 @@ const SingleActorCard = () => {
               className="button-tab"
               onClick={() => {
                 setSwitchTabs(2);
-                moviesFromActor.classList.add("active");
-                moviesFromActor.classList.remove("inactive");
-                personalInformation.classList.add("inactive");
               }}
             >
               <h2 className="h2-text-tab" style={{ padding: "0 30px" }}>
@@ -85,7 +71,11 @@ const SingleActorCard = () => {
           </div>
           <div
             className="actor-personal-information-container"
-            style={{ flexDirection: "column", marginTop: "5%" }}
+            style={{
+              flexDirection: "column",
+              marginTop: "5%",
+              display: switchTabs === 1 ? `flex` : `none`,
+            }}
           >
             <h1>{currentActor?.name}</h1>
             <h2>Birth: {currentActor?.birthday}</h2>
@@ -93,8 +83,12 @@ const SingleActorCard = () => {
             <p>{currentActor ? truncate(currentActor.biography) : ""}</p>
           </div>
         </div>
-        <div id="actor-movies" class="div3">
-          <div className="movies-from-actor-container inactive">
+        <div
+          id="actor-movies"
+          class="div3"
+          style={{ display: switchTabs === 2 ? `flex` : `none` }}
+        >
+          <div className="movies-from-actor-container">
             <MovieCardGrid movies={currentActorMovies?.cast} />
           </div>
         </div>

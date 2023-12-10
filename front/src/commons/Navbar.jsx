@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setSearch } from "../store/search";
+import { initialState, setUser } from "../store/user";
 import axios from "axios";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   const user = useSelector((state) => state.user);
   useEffect(() => {
     if (user.email) {
@@ -29,7 +31,10 @@ const Navbar = () => {
         { user: user.email },
         { withCredentials: true }
       )
-      .then(() => navigate("/"))
+      .then(() => {
+        dispatch(setUser(initialState));
+        navigate("/");
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -68,9 +73,15 @@ const Navbar = () => {
             className="textInput"
           />
         </div>
-        <Link to="/account">
-          <button className="home-button">My Account </button>
-        </Link>
+        {pathname === `/account` ? (
+          <button className="home-button" onClick={handleLogoutClick}>
+            Log out
+          </button>
+        ) : (
+          <Link to="/account">
+            <button className="home-button">My Account </button>
+          </Link>
+        )}
       </div>
     </div>
   );

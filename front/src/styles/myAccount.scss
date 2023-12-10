@@ -12,6 +12,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.side-bar-my-account {
+  position: absolute;
+  left: 3.5%;
+  top: 27%;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.button-tab.my-account {
+  display: flex;
+  box-shadow: -8px 9px 23px -14px rgb(230, 63, 63);
 }
 .personal-information-container {
   width: 70%;

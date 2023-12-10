@@ -5,6 +5,7 @@ import MovieCardGrid from "../commons/MovieCardGrid";
 
 const Account = () => {
   const user = useSelector((state) => state.user);
+  const [switchTabs, setSwitchTabs] = useState(1);
   const [favouriteMovies, setFavouriteMovies] = useState();
   const favouriteMoviesArray = [];
   const options = {
@@ -31,12 +32,39 @@ const Account = () => {
       .then(() => setFavouriteMovies(favouriteMoviesArray))
       .catch((err) => console.error(err));
   }, [user]);
-
-  // console.log("favourite movies", favouriteMovies);
   return (
     <div className="account-container">
       <div className="account-content-container">
-        {/* <div className="personal-information-container">
+        <aside className="side-bar-my-account">
+          <button
+            className="button-tab my-account"
+            onClick={() => {
+              setSwitchTabs(1);
+            }}
+          >
+            <h2 className="h2-text-tab">Personal Information</h2>
+          </button>
+          <button
+            className="button-tab my-account"
+            onClick={() => {
+              setSwitchTabs(2);
+            }}
+          >
+            <h2 className="h2-text-tab">Favourite content</h2>
+          </button>
+          <button
+            className="button-tab my-account"
+            onClick={() => {
+              setSwitchTabs(3);
+            }}
+          >
+            <h2 className="h2-text-tab">Watchlist</h2>
+          </button>
+        </aside>
+        <div
+          className="personal-information-container"
+          style={{ display: switchTabs === 1 ? `flex` : `none` }}
+        >
           <div className="inner-container">
             <div className="img-container">
               <img src="https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Blank&hatColor=White&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=Hoodie&clotheColor=White&eyeType=Wink&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Light" />
@@ -71,9 +99,11 @@ const Account = () => {
               </form>
             </div>
           </div>
-        </div> */}
-        {/* <div className="watchlist-container"></div> */}
-        <div className="favourites-container">
+        </div>
+        <div
+          className="favourites-container"
+          style={{ display: switchTabs === 2 ? `flex` : `none` }}
+        >
           <div className="favourite-movies">
             <div className="h1-favourite-title-container">
               <h1 className="h1-favourite-title">
