@@ -10,6 +10,7 @@
 @import "./singleActor.scss";
 @import "./footer.scss";
 @import "./myAccount.scss";
+@import "./elements.scss";
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@200&display=swap");
 body {
   margin: 0;
@@ -93,9 +94,9 @@ a {
     margin-bottom: -2px;
     font-size: 1.4rem;
     letter-spacing: 1px;
-    filter: blur(2.7px);
-    opacity: 0.8;
+    // opacity: 0.8;
     transition: all 0.7s ease-in-out;
+    animation: bounce-normal 2s linear infinite;
     &:hover {
       transform: scale(1.05);
       filter: blur(0px);
@@ -106,6 +107,26 @@ a {
     color: #ffffff;
     font-weight: 500;
     letter-spacing: 0.5px;
+  }
+}
+
+@keyframes bounce-normal {
+  0%,
+  90%,
+  to {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.03);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotatex(0deg);
+  }
+  to {
+    transform: rotatex(360deg);
   }
 }
 

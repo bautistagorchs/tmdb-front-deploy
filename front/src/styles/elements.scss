@@ -1,0 +1,63 @@
+.background-elements-container {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  font-size: 1.3rem;
+  position: relative;
+}
+
+.positions-container {
+  height: 100%;
+  position: relative;
+}
+
+.element {
+  height: 25vh;
+  width: 25vh;
+  position: absolute;
+}
+#yellow {
+  top: 20vh;
+  left: 20vh;
+  border-radius: 24% 57% 76% 36%;
+  background-color: yellow;
+  rotate: 40deg;
+  animation: yellow 16s linear infinite;
+}
+#green {
+  top: 20vh;
+  left: 160vh;
+  border-radius: 31% 23% 56% 55%;
+  background-color: green;
+  animation: green 16s linear infinite;
+}
+
+@keyframes yellow {
+  0% {
+    transform: translateY(0vh) translateX(0vh);
+  }
+  33% {
+    transform: translateY(20vh) translateX(20vh);
+  }
+  66% {
+    transform: translateY(10vh) translateX(90vh);
+  }
+  100% {
+    transform: translateY(0vh) translateX(0vh);
+  }
+}
+
+@keyframes green {
+  0% {
+    transform: translateY(0vh) translateX(0vh);
+  }
+  33% {
+    transform: translateY(-20vh) translateX(-10vh);
+  }
+  66% {
+    transform: translateY(10vh) translateX(-90vh);
+  }
+  100% {
+    transform: translateY(0vh) translateX(0vh);
+  }
+}

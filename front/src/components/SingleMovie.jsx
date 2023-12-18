@@ -15,7 +15,6 @@ const SingleMovie = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
-  console.log("parametros", params);
   return (
     <motion.div
       className="div-container-single-movie-page"

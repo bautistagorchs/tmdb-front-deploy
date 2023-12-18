@@ -5,7 +5,6 @@ import MovieCardGrid from "./MovieCardGrid";
 
 const SingleActorCard = () => {
   const truncate = (bio) => {
-    console.log(bio[1500]);
     return bio.slice(0, 700) + (bio[700] === undefined ? "" : "...");
   };
   const [currentActor, setCurrentActor] = useState();

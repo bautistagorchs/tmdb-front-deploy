@@ -16,6 +16,7 @@ import SingleActor from "./components/SingleActor";
 import SingleMovie from "./components/SingleMovie";
 import { setUser } from "./store/user";
 import "./styles/index.scss";
+import BackgoundElements from "./commons/BackgoundElements";
 
 const App = () => {
   const user = useSelector((state) => state.user);
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/elements" element={<BackgoundElements />} />
           </>
         )}
         {user.email && (

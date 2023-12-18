@@ -59,15 +59,11 @@ router.get("/favourites/exist/:email/:id", (req, res, next) => {
     .then((user) => {
       if (user && user.dataValues.favourites) {
         if (user.dataValues.favourites.includes(parseInt(req.params.id))) {
-          res.sendStatus(200);
-        } else {
-          next();
-        }
-      } else {
-        res.sendStatus(404);
-      }
+          res.status(200).send("found");
+        } else res.status(200).send("not found");
+      } else res.sendStatus(404);
     })
-    .catch((err) => res.sendStatus(500));
+    .catch((err) => res.status(500).send(err));
 });
 
 router.post("/logout", validateAuth, (req, res) => {

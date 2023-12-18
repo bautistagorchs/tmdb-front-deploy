@@ -7,16 +7,9 @@ import { Link } from "react-router-dom";
 const SingleMovieCard = () => {
   const user = useSelector((state) => state.user);
   const params = useParams();
-  // eslint-disable-next-line
   const [currentMovie, setCurrentMovie] = useState();
-  console.log(
-    "🚀 ~ file: SingleMovieCard.jsx:12 ~ SingleMovieCard ~ currentMovie:",
-    currentMovie
-  );
-  const [existingFavourite, setExistingFavourite] =
-    useState("Add to favourites");
+  const [existingFavourite, setExistingFavourite] = useState(false);
 
-  console.log(currentMovie);
   const handleClickFavourites = () => {
     user.email
       ? axios
@@ -25,10 +18,10 @@ const SingleMovieCard = () => {
             { email: user.email, newFavourite: currentMovie.id },
             { withCredentials: true }
           )
-          .then(() => console.log("added to favourites"))
+          .then(() => {})
           .catch((err) => console.error("that did not go well"))
       : console.log("for now no habia email");
-    setExistingFavourite("Remove from fravourites");
+    setExistingFavourite();
   };
   const options = {
     headers: {
@@ -78,9 +71,13 @@ const SingleMovieCard = () => {
             withCredentials: true,
           }
         )
-        .then(() => setExistingFavourite("Remove from favourites"))
+        .then((response) =>
+          response.data === "found"
+            ? setExistingFavourite(true)
+            : setExistingFavourite(false)
+        )
         .catch(() => {});
-  });
+  }, [currentMovie, existingFavourite]);
   return (
     <div className="single-movie-container">
       <div class="parent-single-movie">
@@ -110,7 +107,7 @@ const SingleMovieCard = () => {
         </div>
         <div class="div3">
           <button className="home-button" onClick={handleClickFavourites}>
-            {existingFavourite}
+            {existingFavourite ? `Remove from favourites` : `Add to favourites`}
           </button>
           <Link
             target="blank"

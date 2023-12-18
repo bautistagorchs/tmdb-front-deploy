@@ -20,7 +20,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputData);
     axios
       .post("http://localhost:3001/api/users/register", inputData)
       .then((response) => {
