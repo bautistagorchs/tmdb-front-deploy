@@ -9,6 +9,11 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
+  const [inputData, setInputData] = useState({
+    password: "",
+    email: "",
+  });
   //styles
   useEffect(() => {
     document.body.classList.toggle("loginPage", location.pathname === "/login");
@@ -17,12 +22,6 @@ const Login = () => {
     };
   }, [location.pathname]);
 
-  // all the logic of inputs
-  const [inputData, setInputData] = useState({
-    password: "",
-    email: "",
-  });
-  const [error, setError] = useState(null);
   const inputValue = (e) => {
     const { name, value } = e.target;
     setInputData((previousState) => {
@@ -48,8 +47,6 @@ const Login = () => {
         setError("email or passsword incorrect");
         console.error(error);
       });
-    // const { email } = inputData;
-    // dispatch(setUser(email));
     setInputData({ password: "", email: "" });
   };
   const labelUp = () => {
@@ -69,7 +66,7 @@ const Login = () => {
         <h4 className="h4-subtitle-login">- Full-Stack developer -</h4>
       </div>
       <h1>Hey, Welcome back!</h1>
-      <form className="form-container">
+      <form className="form-container" action="submit" onSubmit={handleSubmit}>
         <div className="user-box">
           <input type="text" name="email" required="" onChange={inputValue} />
           <label className="placeholder-form-login" onKeyDown={labelUp}>
@@ -87,7 +84,6 @@ const Login = () => {
         </div>
         <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
-          {/* ASK HERE! */}
           <a>
             SIGN IN
             <span></span>
@@ -95,7 +91,6 @@ const Login = () => {
         </center>
       </form>
       <h4>Dont have an account yet?</h4>
-      {/* ASK HERE! */}
       <a className="tag-a-register-login" href="/register">
         Sign Up here!
       </a>

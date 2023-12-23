@@ -1,17 +1,27 @@
 import React, { useEffect } from "react";
 import GithubIcon from "../utils/GithubIcon";
 import LinkedinIcon from "../utils/LinkedinIcon";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import GmailIcon from "../utils/GmailIcon";
 import { useSelector } from "react-redux";
 
 const Footer = () => {
   const user = useSelector((state) => state.user);
+  const { pathname } = useLocation();
   useEffect(() => {
     if (user.email) {
       document.querySelector(".footer-container").style.display = "flex";
     }
-  }, [user]);
+    if (pathname === `/`) {
+      document
+        .querySelector(".footer-container")
+        .classList.add(`footer-container-index`);
+    } else {
+      document
+        .querySelector(".footer-container")
+        .classList.remove(`footer-container-index`);
+    }
+  }, [user, pathname]);
   return (
     <div className="footer-container">
       <div className="footer-content-container">

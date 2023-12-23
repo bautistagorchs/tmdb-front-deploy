@@ -30,21 +30,7 @@ const App = () => {
       })
       .then((user) => dispatch(setUser(user.data)))
       .catch((error) => console.error(error));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, location.pathname]);
-  // useEffect(() => {
-  //   if (!user.email) {
-  //     if (location.pathname === "/") return;
-  //     if (location.pathname !== ("/login" || "/register")) {
-  //       return navigate("/login");
-  //     }
-  //   } else if (user.email) {
-  //     // if (location.pathname === "/") return navigate("/main");
-  //     if (location.pathname.includes("/login" || "/register")) {
-  //       return navigate("/main");
-  //     }
-  //   }
-  // }, [user, location.pathname]);
   return (
     <AnimatePresence mode="wait">
       {user.email && <Navbar />}
@@ -66,7 +52,6 @@ const App = () => {
             <Route path="/account" element={<Account />} />
           </>
         )}
-        {/* <Route path="/*" element={<Navigate to="/" />} /> */}
       </Routes>
       <Footer />
     </AnimatePresence>
