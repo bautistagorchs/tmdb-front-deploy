@@ -9,6 +9,7 @@ const SingleMovieCard = () => {
   const params = useParams();
   const [currentMovie, setCurrentMovie] = useState();
   const [existingFavourite, setExistingFavourite] = useState(false);
+  const [tab, setTab] = useState(2);
 
   const handleClickFavourites = () => {
     user.email
@@ -87,41 +88,59 @@ const SingleMovieCard = () => {
             alt=""
           />
         </div>
-        <div class="div2 smcdiv2">
-          <h1>
-            {currentMovie?.title}
-            {currentMovie?.name}
-          </h1>
-          <h2>{currentMovie?.tagline}</h2>
-          <h3>
-            Genres: {" - "}
-            {currentMovie?.genres
-              ? currentMovie.genres.map((e) => e.name + " - ")
-              : "no genres available"}
-          </h3>
-          <h3>
-            Released on: {currentMovie?.release_date}{" "}
-            {currentMovie?.first_air_date}
-          </h3>
-          <p>{currentMovie?.overview}</p>
-        </div>
-        <div class="div3">
-          <button className="home-button" onClick={handleClickFavourites}>
-            {existingFavourite ? `Remove from favourites` : `Add to favourites`}
-          </button>
-          <Link
-            target="blank"
-            to={`https://www.youtube.com/results?search_query=${
-              currentMovie?.name || currentMovie?.title
-            }+trailer`}
-          >
-            <button id="button-trailer" className="home-button">
-              <p className="tag-a-trailer" style={{ margin: "unset" }}>
-                Watch Trailer
-              </p>
-            </button>
-          </Link>
-        </div>
+        {tab === 1 ? (
+          <>
+            <div class="div2 smcdiv2">
+              <h1>
+                {currentMovie?.title}
+                {currentMovie?.name}
+              </h1>
+              <h2>{currentMovie?.tagline}</h2>
+              <h3>
+                Genres: {" - "}
+                {currentMovie?.genres
+                  ? currentMovie.genres.map((e) => e.name + " - ")
+                  : "no genres available"}
+              </h3>
+              <h3>
+                Released on: {currentMovie?.release_date}{" "}
+                {currentMovie?.first_air_date}
+              </h3>
+              <p>{currentMovie?.overview}</p>
+            </div>
+            <div class="div3">
+              <button className="home-button" onClick={handleClickFavourites}>
+                {existingFavourite
+                  ? `Remove from favourites`
+                  : `Add to favourites`}
+              </button>
+              <Link
+                target="blank"
+                to={`https://www.youtube.com/results?search_query=${
+                  currentMovie?.name || currentMovie?.title
+                }+trailer`}
+              >
+                <button id="button-trailer" className="home-button">
+                  <p className="tag-a-trailer" style={{ margin: "unset" }}>
+                    Watch Trailer
+                  </p>
+                </button>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div className="trailer-container">
+            <iframe
+              width="1000"
+              height="591"
+              src="https://www.youtube.com/embed/VWavstJydZU?si=cZ7aKrYRO17Q8r-t"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
       </div>
     </div>
   );
