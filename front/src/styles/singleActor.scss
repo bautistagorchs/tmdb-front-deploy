@@ -1,16 +1,15 @@
 .single-actor-container {
-  margin: 0 4%;
+  margin: 1.5% 4% 0 4%;
 }
-#actor-birth {
-  // grid-area: 1 / 2 / 2 / 4;
-  border: 1px solid blue;
-}
+
 .tabs-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 34vh;
-  margin-top: 1%;
+}
+.single-actor-img {
+  border-radius: 12px;
 }
 .button-tab {
   display: flex;
@@ -34,7 +33,7 @@
 }
 .actor-personal-information-container {
   width: 70%;
-  height: 60vh;
+  padding: 2vh 0 6vh 0;
   margin-top: 5%;
   display: flex;
   justify-content: center;
@@ -74,7 +73,10 @@
 }
 .movies-from-actor-container {
   margin-top: 0vh;
-  transform: translateY(-90%);
+  // transform: translateY(-90%);
+}
+div#actor-movies {
+  margin-top: 2%;
 }
 .active {
   z-index: 1;

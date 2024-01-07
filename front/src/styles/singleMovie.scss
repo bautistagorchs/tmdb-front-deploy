@@ -2,7 +2,7 @@
   background-color: rgb(39, 33, 33);
 }
 .single-movie-container {
-  padding-top: 0.5%;
+  padding-top: 1.5%;
   margin: 0 4%;
 }
 
@@ -23,6 +23,9 @@
   display: flex;
   flex-direction: column;
   margin-left: 4%;
+}
+.div2 {
+  width: 50%;
 }
 .div2 .smcdiv2 {
   h1 {
@@ -48,8 +51,7 @@
     font-size: 105%;
   }
 }
-.div3 {
-}
+
 .tag-a-trailer:link,
 .tag-a-trailer:visited,
 .tag-a-trailer:active {
@@ -59,9 +61,7 @@
 #button-trailer {
   margin-left: 5%;
 }
-#actor-birth {
-  margin-top: -12px;
-}
+
 .trailer-container {
   display: flex;
   justify-content: center;

@@ -94,7 +94,7 @@ const SingleMovieCard = () => {
               className="div2 smcdiv2"
               style={{
                 flexDirection: "column",
-                marginTop: "5%",
+                margin: "5vh 0",
               }}
             >
               <h1>

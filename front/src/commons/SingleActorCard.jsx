@@ -42,14 +42,15 @@ const SingleActorCard = () => {
   }, [currentActor]);
   return (
     <div className="single-actor-container">
-      <div className="parent-single-movie">
-        <div>
+      <div className="parent-single-movie" style={{ marginTop: "3%" }}>
+        <div className="single-actor-img-container">
           <img
             src={`https://image.tmdb.org/t/p/w500/${currentActor?.profile_path}`}
             alt=""
+            className="single-actor-img"
           />
         </div>
-        <div id="actor-birth">
+        <div style={{ marginLeft: "4%" }}>
           <div className="tabs-container">
             <button
               className="button-tab"
@@ -72,26 +73,28 @@ const SingleActorCard = () => {
               </h2>
             </button>
           </div>
-          <div
-            className="actor-personal-information-container"
-            style={{
-              flexDirection: "column",
-              marginTop: "5%",
-              display: switchTabs === 1 ? `flex` : `none`,
-            }}
-          >
-            <h1>{currentActor?.name}</h1>
-            <h2>Birthday: {currentActor?.birthday}</h2>
-            <h2>{currentActor?.place_of_birth}</h2>
-            <p>{currentActor ? truncate(currentActor.biography) : ""}</p>
+          <div id="actor-birth">
+            <div
+              className="actor-personal-information-container"
+              style={{
+                flexDirection: "column",
+                marginTop: "5%",
+                display: switchTabs === 1 ? `flex` : `none`,
+              }}
+            >
+              <h1>{currentActor?.name}</h1>
+              <h2>Birthday: {currentActor?.birthday}</h2>
+              <h2>{currentActor?.place_of_birth}</h2>
+              <p>{currentActor ? truncate(currentActor.biography) : ""}</p>
+            </div>
           </div>
-        </div>
-        <div
-          id="actor-movies"
-          style={{ display: switchTabs === 2 ? `flex` : `none` }}
-        >
-          <div className="movies-from-actor-container">
-            <MovieCardGrid movies={currentActorMovies?.cast} />
+          <div
+            id="actor-movies"
+            style={{ display: switchTabs === 2 ? `flex` : `none` }}
+          >
+            <div className="movies-from-actor-container">
+              <MovieCardGrid movies={currentActorMovies?.cast} />
+            </div>
           </div>
         </div>
       </div>
