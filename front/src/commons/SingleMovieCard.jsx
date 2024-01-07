@@ -9,7 +9,7 @@ const SingleMovieCard = () => {
   const params = useParams();
   const [currentMovie, setCurrentMovie] = useState();
   const [existingFavourite, setExistingFavourite] = useState(false);
-  const [tab, setTab] = useState(2);
+  const [tab, setTab] = useState(1);
 
   const handleClickFavourites = () => {
     user.email
@@ -89,8 +89,14 @@ const SingleMovieCard = () => {
           />
         </div>
         {tab === 1 ? (
-          <>
-            <div class="div2 smcdiv2">
+          <div className="single-movie-info-container">
+            <div
+              className="div2 smcdiv2"
+              style={{
+                flexDirection: "column",
+                marginTop: "5%",
+              }}
+            >
               <h1>
                 {currentMovie?.title}
                 {currentMovie?.name}
@@ -127,7 +133,7 @@ const SingleMovieCard = () => {
                 </button>
               </Link>
             </div>
-          </>
+          </div>
         ) : (
           <div className="trailer-container">
             <iframe

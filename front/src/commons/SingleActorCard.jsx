@@ -42,14 +42,14 @@ const SingleActorCard = () => {
   }, [currentActor]);
   return (
     <div className="single-actor-container">
-      <div class="parent-single-movie">
-        <div class="div1">
+      <div className="parent-single-movie">
+        <div>
           <img
             src={`https://image.tmdb.org/t/p/w500/${currentActor?.profile_path}`}
             alt=""
           />
         </div>
-        <div id="actor-birth" class="div2">
+        <div id="actor-birth">
           <div className="tabs-container">
             <button
               className="button-tab"
@@ -81,14 +81,13 @@ const SingleActorCard = () => {
             }}
           >
             <h1>{currentActor?.name}</h1>
-            <h2>Birth: {currentActor?.birthday}</h2>
-            <h2 id="actor-birth">{currentActor?.place_of_birth}</h2>
+            <h2>Birthday: {currentActor?.birthday}</h2>
+            <h2>{currentActor?.place_of_birth}</h2>
             <p>{currentActor ? truncate(currentActor.biography) : ""}</p>
           </div>
         </div>
         <div
           id="actor-movies"
-          class="div3"
           style={{ display: switchTabs === 2 ? `flex` : `none` }}
         >
           <div className="movies-from-actor-container">
