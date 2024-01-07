@@ -8,6 +8,8 @@ const Account = () => {
   const [switchTabs, setSwitchTabs] = useState(1);
   const [favouriteMovies, setFavouriteMovies] = useState();
   const favouriteMoviesArray = [];
+  const [favouriteActors, setFavouriteActors] = useState();
+  const favouriteActorsArray = [];
   const options = {
     headers: {
       accept: "application/json",
@@ -31,7 +33,24 @@ const Account = () => {
       })
       .then(() => setFavouriteMovies(favouriteMoviesArray))
       .catch((err) => console.error(err));
-  }, [user]);
+  }, []);
+  useEffect(() => {
+    // axios
+    //   .get(`http://localhost:3001/api/users/favourites/${user.email}`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => {
+    //     res.data.length &&
+    //       res.data.map((element) => {
+    axios
+      .get(`https://api.themoviedb.org/3/person/'1190668`, options)
+      .then((movie) => favouriteActorsArray.push(movie))
+      .catch((err) => console.error(err));
+    // });
+    // })
+    // .then(() => setFavouriteActors(favouriteActorsArray))
+    // .catch((err) => console.error(err));
+  }, []);
   return (
     <div className="account-container">
       <div className="account-content-container">
@@ -41,6 +60,13 @@ const Account = () => {
             onClick={() => {
               setSwitchTabs(1);
             }}
+            style={
+              switchTabs === 1
+                ? {
+                    backgroundColor: "rgba(180, 28, 28, 0.664)",
+                  }
+                : { backgroundColor: "transparent" }
+            }
           >
             <h2 className="h2-text-tab">Personal Information</h2>
           </button>
@@ -49,6 +75,13 @@ const Account = () => {
             onClick={() => {
               setSwitchTabs(2);
             }}
+            style={
+              switchTabs === 2
+                ? {
+                    backgroundColor: "rgba(180, 28, 28, 0.664)",
+                  }
+                : { backgroundColor: "transparent" }
+            }
           >
             <h2 className="h2-text-tab">Favourite content</h2>
           </button>
@@ -57,8 +90,15 @@ const Account = () => {
             onClick={() => {
               setSwitchTabs(3);
             }}
+            style={
+              switchTabs === 3
+                ? {
+                    backgroundColor: "rgba(180, 28, 28, 0.664)",
+                  }
+                : { backgroundColor: "transparent" }
+            }
           >
-            <h2 className="h2-text-tab">Watchlist</h2>
+            <h2 className="h2-text-tab">Favoruite actors</h2>
           </button>
         </aside>
         <div
@@ -111,8 +151,22 @@ const Account = () => {
                 <span id="span2">content</span>
               </h1>
             </div>
-            <MovieCardGrid movies={favouriteMovies} />
+            <MovieCardGrid content={favouriteMovies} />
           </div>
+        </div>
+        <div
+          className="favourites-container"
+          style={{ display: switchTabs === 3 ? `flex` : `none` }}
+        >
+          {/* <div className="favourite-movies">
+            <div className="h1-favourite-title-container">
+              <h1 className="h1-favourite-title">
+                <span id="span1">Your </span>favourite{" "}
+                <span id="span2">actors</span>
+              </h1>
+            </div>
+            <MovieCardGrid movies={favouriteActors} />
+          </div> */}
         </div>
       </div>
     </div>

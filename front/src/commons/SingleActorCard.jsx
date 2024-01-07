@@ -58,6 +58,11 @@ const SingleActorCard = () => {
                 setSwitchTabs(1);
                 localStorage.setItem("actorTab", 1);
               }}
+              style={
+                switchTabs === 1
+                  ? { border: "1px solid rgb(230,63,63)" }
+                  : { border: "none" }
+              }
             >
               <h2 className="h2-text-tab">Personal Information</h2>
             </button>
@@ -67,6 +72,11 @@ const SingleActorCard = () => {
                 setSwitchTabs(2);
                 localStorage.setItem("actorTab", 2);
               }}
+              style={
+                switchTabs === 2
+                  ? { border: "1px solid rgb(230,63,63)" }
+                  : { border: "none" }
+              }
             >
               <h2 className="h2-text-tab" style={{ padding: "0 30px" }}>
                 Movies
