@@ -13,7 +13,10 @@ const SwiperPeople = ({ content }) => {
         content.map((content, i) => (
           <SwiperSlide className="swiper-slide-people" key={i}>
             <Link to={`/actor/single/${content.id}`}>
-              <div className="img-container-people">
+              <div
+                className="img-container-people"
+                onClick={localStorage.setItem("actorTab", 1)}
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${content.profile_path}`}
                   alt={content.name}

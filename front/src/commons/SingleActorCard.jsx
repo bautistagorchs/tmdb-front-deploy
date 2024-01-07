@@ -9,7 +9,9 @@ const SingleActorCard = () => {
   };
   const [currentActor, setCurrentActor] = useState();
   const [currentActorMovies, setCurrentActorMovies] = useState();
-  const [switchTabs, setSwitchTabs] = useState(1);
+  const [switchTabs, setSwitchTabs] = useState(
+    parseInt(localStorage.getItem("actorTab"))
+  );
   const params = useParams();
   const options = {
     headers: {
@@ -53,6 +55,7 @@ const SingleActorCard = () => {
               className="button-tab"
               onClick={() => {
                 setSwitchTabs(1);
+                localStorage.setItem("actorTab", 1);
               }}
             >
               <h2 className="h2-text-tab">Personal Information</h2>
@@ -61,6 +64,7 @@ const SingleActorCard = () => {
               className="button-tab"
               onClick={() => {
                 setSwitchTabs(2);
+                localStorage.setItem("actorTab", 2);
               }}
             >
               <h2 className="h2-text-tab" style={{ padding: "0 30px" }}>
