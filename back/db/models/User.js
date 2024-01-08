@@ -36,6 +36,10 @@ Users.init(
       type: S.ARRAY(S.INTEGER),
       defaultValue: [],
     },
+    favourite_actors: {
+      type: S.ARRAY(S.INTEGER),
+      defaultValue: [],
+    },
     salt: {
       type: S.STRING,
     },

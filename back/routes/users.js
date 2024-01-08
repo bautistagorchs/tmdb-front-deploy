@@ -65,6 +65,43 @@ router.get("/favourites/exist/:email/:id", (req, res, next) => {
     })
     .catch((err) => res.status(500).send(err));
 });
+router.get("/favourite/actor/:email", (req, res) => {
+  User.findOne({ where: { email: req.params.email } })
+    .then((user) => {
+      res.status(200).send(user.favourite_actors);
+    })
+    .catch((err) => console.error(err));
+});
+router.get("/favourite/actor/exist/:email/:id", (req, res) => {
+  User.findOne({ where: { email: req.params.email } })
+    .then((user) => {
+      if (user) {
+        if (user.favourite_actors.includes(parseInt(req.params.id))) {
+          res.status(200).send("found");
+        } else res.status(200).send("not found");
+      } else res.sendStatus(404);
+    })
+    .catch((err) => console.error(err));
+});
+router.post("/favourite/actors", (req, res) => {
+  User.findOne({ where: { email: req.body.email } })
+    .then((user) => {
+      if (user) {
+        const existingId = user.favourite_actors.indexOf(req.body.id);
+        existingId !== -1
+          ? user.favourite_actors.splice(existingId, 1)
+          : user.favourite_actors.push(req.body.id);
+        User.update(
+          { favourite_actors: user.favourite_actors },
+          {
+            where: { email: req.body.email },
+            returning: true,
+          }
+        ).then(() => res.sendStatus(201));
+      } else res.status(404).send("user not found");
+    })
+    .catch((err) => console.error(err));
+});
 
 router.post("/logout", validateAuth, (req, res) => {
   res.clearCookie("token");
