@@ -19,6 +19,7 @@ body {
   color: black;
   background-color: rgb(22, 19, 19);
   overflow: auto;
+  scroll-behavior: smooth;
 }
 body::-webkit-scrollbar {
   width: 0.8em;
@@ -125,7 +126,6 @@ a {
 .buttons {
   display: flex;
   flex-direction: column;
-  // border: 2px solid black;
 }
 
 .buttons button {

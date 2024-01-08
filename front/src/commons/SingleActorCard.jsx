@@ -1,18 +1,24 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router-dom";
 import MovieCardGrid from "./MovieCardGrid";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const SingleActorCard = () => {
   const truncate = (bio) => {
     return bio.slice(0, 700) + (bio[700] === undefined ? "" : "...");
   };
+  const navigate = useNavigate();
   const [currentActor, setCurrentActor] = useState();
   const [currentActorMovies, setCurrentActorMovies] = useState();
+  const [isFavouriteActor, setIsFavouriteActor] = useState();
   const [switchTabs, setSwitchTabs] = useState(
     parseInt(localStorage.getItem("actorTab"))
   );
   const params = useParams();
+  const user = useSelector((state) => state.user);
   const options = {
     headers: {
       accept: "application/json",
@@ -40,6 +46,28 @@ const SingleActorCard = () => {
       setCurrentActorMovies
     ); // eslint-disable-next-line
   }, [currentActor]);
+  useEffect(() => {
+    user.email &&
+      axios
+        .get(
+          `http://localhost:3001/api/users/favourite/actor/exist/${user.email}/${currentActor?.id}`,
+          { withCredentials: true }
+        )
+        .then((response) =>
+          setIsFavouriteActor(response.data === "found" ? true : false)
+        )
+        .catch((err) => console.error(err));
+  }, [isFavouriteActor, currentActor]);
+  const handleFavouriteActor = () => {
+    axios
+      .post(`http://localhost:3001/api/users/favourite/actors`, {
+        email: user.email,
+        id: currentActor?.id,
+      })
+      .then(() => {})
+      .catch((err) => console.error(err));
+    setIsFavouriteActor();
+  };
   return (
     <div className="single-actor-container">
       <div className="parent-single-movie" style={{ marginTop: "3%" }}>
@@ -49,6 +77,10 @@ const SingleActorCard = () => {
             alt=""
             className="single-actor-img"
           />
+          <button class="back-button" onClick={() => navigate(-1)}>
+            <FaArrowLeftLong height={"1.5em"} width={"1.5em"} />
+            Back
+          </button>
         </div>
         <div style={{ marginLeft: "4%" }}>
           <div className="tabs-container">
@@ -96,6 +128,28 @@ const SingleActorCard = () => {
               <h2>Birthday: {currentActor?.birthday}</h2>
               <h2>{currentActor?.place_of_birth}</h2>
               <p>{currentActor ? truncate(currentActor.biography) : ""}</p>
+              <div className="single-actor-button-container">
+                <button
+                  className="
+                 home-button"
+                  onClick={handleFavouriteActor}
+                >
+                  {isFavouriteActor
+                    ? `I dont like this actor`
+                    : `I love this actor`}
+                </button>
+                <Link
+                  to={`https://www.google.com.ar/search?q=${currentActor?.name}`}
+                  target="blank"
+                >
+                  <button
+                    className="
+                  home-button"
+                  >
+                    Learn more...
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
           <div
@@ -103,7 +157,7 @@ const SingleActorCard = () => {
             style={{ display: switchTabs === 2 ? `flex` : `none` }}
           >
             <div className="movies-from-actor-container">
-              <MovieCardGrid movies={currentActorMovies?.cast} />
+              <MovieCardGrid content={currentActorMovies?.cast} />
             </div>
           </div>
         </div>

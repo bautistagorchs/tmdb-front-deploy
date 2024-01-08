@@ -35,22 +35,21 @@ const Account = () => {
       .catch((err) => console.error(err));
   }, []);
   useEffect(() => {
-    // axios
-    //   .get(`http://localhost:3001/api/users/favourites/${user.email}`, {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => {
-    //     res.data.length &&
-    //       res.data.map((element) => {
     axios
-      .get(`https://api.themoviedb.org/3/person/'1190668`, options)
-      .then((movie) => favouriteActorsArray.push(movie))
+      .get(`http://localhost:3001/api/users/favourite/actor/${user.email}`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        response.data.map((actorId) => {
+          axios
+            .get(`https://api.themoviedb.org/3/person/${actorId}`, options)
+            .then((actor) => favouriteActorsArray.push(actor.data))
+            .catch((err) => console.error(err));
+        });
+      })
+      .then(() => setFavouriteActors(favouriteActorsArray))
       .catch((err) => console.error(err));
-    // });
-    // })
-    // .then(() => setFavouriteActors(favouriteActorsArray))
-    // .catch((err) => console.error(err));
-  }, []);
+  }, [user]);
   return (
     <div className="account-container">
       <div className="account-content-container">
@@ -98,7 +97,7 @@ const Account = () => {
                 : { backgroundColor: "transparent" }
             }
           >
-            <h2 className="h2-text-tab">Favoruite actors</h2>
+            <h2 className="h2-text-tab">Favourite actors</h2>
           </button>
         </aside>
         <div
@@ -158,15 +157,15 @@ const Account = () => {
           className="favourites-container"
           style={{ display: switchTabs === 3 ? `flex` : `none` }}
         >
-          {/* <div className="favourite-movies">
+          <div className="favourite-movies">
             <div className="h1-favourite-title-container">
               <h1 className="h1-favourite-title">
                 <span id="span1">Your </span>favourite{" "}
                 <span id="span2">actors</span>
               </h1>
             </div>
-            <MovieCardGrid movies={favouriteActors} />
-          </div> */}
+            <MovieCardGrid content={favouriteActors} />
+          </div>
         </div>
       </div>
     </div>

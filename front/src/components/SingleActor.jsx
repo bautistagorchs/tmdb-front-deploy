@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router";
 import SingleActorCard from "../commons/SingleActorCard";
 
 const SingleMovie = () => {
+  window.scrollTo(0, 0);
   //styles
   const location = useLocation();
   const params = useParams();
@@ -19,13 +20,10 @@ const SingleMovie = () => {
   return (
     <motion.div
       className="div-container-single-movie-page"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.8,
-        delay: 0.5,
-        ease: [0, 0.71, 0.2, 1.01],
-      }}
+      initial={{ x: -400 }}
+      animate={{ x: 0 }}
+      // exit={{ x: 800 }}
+      transition={{ duration: 0.5, scale: { duration: 0 } }}
     >
       <SingleActorCard />
     </motion.div>

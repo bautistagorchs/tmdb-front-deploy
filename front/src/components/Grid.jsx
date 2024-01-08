@@ -123,36 +123,8 @@ const Grid = () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // useEffect(() => {
-  //   if (
-  //     trendingMovies.length &&
-  //     trendingTvShows.length &&
-  //     airingToday.length &&
-  //     actionMovies.length &&
-  //     animationMovies.length &&
-  //     popularPeople.length
-  //   ) {
-  //     setLoading(false);
-  //   }
-  // }, [
-  //   trendingMovies,
-  //   trendingTvShows,
-  //   airingToday,
-  //   actionMovies,
-  //   animationMovies,
-  //   popularPeople,
-  // ]);
 
   return (
-    // <div>
-    //   {loading ? (
-    //     <div class="loader-container">
-    //       <div>
-    //         <div class="loader"></div>
-    //         <h3 className="h3-loader">preparing movies...</h3>
-    //       </div>
-    //     </div>
-    //   ) : (
     <div>
       <Header title={"Trending Movies"} />
       <Swiper content={trendingMovies} />
@@ -167,8 +139,6 @@ const Grid = () => {
       <Header title={"Animation Movies"} />
       <Swiper content={animationMovies} />
     </div>
-    // )}
-    // </div>
   );
 };
 

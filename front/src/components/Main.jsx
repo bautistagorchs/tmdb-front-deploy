@@ -14,9 +14,11 @@ const Main = () => {
   }, [location.pathname]);
   return (
     <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: -800 }}
-      transition={{ duration: 0.7, ease: "ease", delay: 0.5 }}
+    // initial={{ opacity: 0, x: 200 }}
+    // animate={{ opacity: 1, x: 0 }}
+    // exit={{ opacity: 0, x: -200 }}
+    // transition={{ duration: 0.5, opacity: { duration: 1 } }}
+    // exitTransition={{ duration: 0 }}
     >
       <Grid />
     </motion.div>

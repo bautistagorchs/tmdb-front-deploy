@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const SingleMovieCard = () => {
   const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const params = useParams();
   const [currentMovie, setCurrentMovie] = useState();
   const [existingFavourite, setExistingFavourite] = useState(false);
@@ -87,6 +89,10 @@ const SingleMovieCard = () => {
             src={`https://image.tmdb.org/t/p/w500/${currentMovie?.poster_path}`}
             alt=""
           />
+          <button class="back-button" onClick={() => navigate(-1)}>
+            <FaArrowLeftLong height={"1.5em"} width={"1.5em"} />
+            Back
+          </button>
         </div>
         {tab === 1 ? (
           <div className="single-movie-info-container">
