@@ -54,7 +54,6 @@
         height: 100%;
         border-radius: 12px;
         transition: all 1.2s ease;
-        transition-delay: 0.1s;
       }
     }
     .movie1 {
@@ -109,7 +108,6 @@
   }
   .first-child {
     transition: all 1.2s ease;
-    transition-delay: 0.2s;
   }
   .movies-container > div:hover {
     transform: rotateY(180deg) scale(1.2);
@@ -137,7 +135,6 @@
     display: none;
     opacity: 0;
     transition: all 1.2s ease;
-    transition-delay: 0.2s;
     .text-container {
       height: 100%;
       width: 100%;
@@ -150,7 +147,14 @@
         padding: 0px 10px;
       }
       #details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70px;
+        border-bottom: 1px solid transparent;
+        transition: all 0.7s ease;
         &:hover {
+          border-bottom: 1px solid white;
           cursor: pointer;
         }
       }

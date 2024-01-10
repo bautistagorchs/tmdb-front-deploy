@@ -141,7 +141,7 @@ const Grid = () => {
       <Swiper content={trendingMovies} />
       <Header title={"Most watched Tv Shows"} />
       <Swiper content={trendingTvShows} />
-      <Header title={"Popular people"} />
+      <Header title={"Popular people"} showInput={true} />
       <SwiperPeople content={popularPeople} />
       <Header title={"Tv Shows Airing Today"} />
       <Swiper content={airingToday} />

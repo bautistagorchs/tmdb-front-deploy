@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { MdArrowOutward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const MoviesGrid = ({ content }) => {
   const navigate = useNavigate();
   const [currentMovies, setCurrentMovies] = useState(content.slice(0, 10));
   const [currentIndex, setCurrentIndex] = useState(10);
-  const [hovered, setHovered] = useState(false);
   useEffect(() => {
     if (currentMovies.length === 0) {
       setCurrentMovies(content.slice(0, 10));
-      // console.log("vacio", currentMovies.length);
     }
     const interval = setInterval(() => {
-      // Cambiar a las otras 10 imágenes después de 10 segundos
       setCurrentMovies(content.slice(currentIndex, currentIndex + 10));
       setCurrentIndex((prevIndex) => (prevIndex + 10) % content.length);
     }, 10000);
-
-    // Limpiar el intervalo al desmontar el componente
     return () => clearInterval(interval);
   }, [currentIndex, content]);
 
@@ -40,7 +36,7 @@ const MoviesGrid = ({ content }) => {
               />
               <div className="info-image-back-container">
                 <div className="text-container">
-                  <p className="p-movie-back">{element.title}</p>
+                  <p className="p-movie-back">- {element.title} -</p>
                   <p
                     id="details"
                     onClick={() =>
@@ -48,6 +44,7 @@ const MoviesGrid = ({ content }) => {
                     }
                   >
                     Details
+                    <MdArrowOutward />
                   </p>
                 </div>
               </div>
