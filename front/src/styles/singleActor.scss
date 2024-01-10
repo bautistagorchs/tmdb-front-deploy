@@ -29,7 +29,7 @@ button.back-button {
   transition: all 0.5s ease;
   &:hover {
     color: rgb(138, 138, 138);
-    cursor: grab;
+    cursor: pointer;
   }
 }
 .button-tab {
@@ -43,7 +43,7 @@ button.back-button {
 .button-tab:hover {
   background-color: rgba(180, 28, 28, 0.664);
   box-shadow: -2px -6px 36px 1px rgb(240, 33, 33);
-  cursor: grab;
+  cursor: pointer;
   .h2-text-tab {
     text-decoration: underline;
   }

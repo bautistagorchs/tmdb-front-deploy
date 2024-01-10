@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Swiper from "../commons/Swiper";
 import Header from "../commons/Header";
+import Swiper from "../commons/Swiper";
 import SwiperPeople from "../commons/SwiperPeople";
+import MoviesGrid from "../commons/MoviesGrid";
 
 const Grid = () => {
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [trendingTvShows, setTrendingTvShows] = useState([]);
   const [airingToday, setAiringToday] = useState([]);
@@ -123,9 +125,18 @@ const Grid = () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    requestToAPI(
+      `https://api.themoviedb.org/3/movie/now_playing`,
+      options,
+      setNowPlayingMovies
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
+      <MoviesGrid content={nowPlayingMovies} />
       <Header title={"Trending Movies"} />
       <Swiper content={trendingMovies} />
       <Header title={"Most watched Tv Shows"} />

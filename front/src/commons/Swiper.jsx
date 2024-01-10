@@ -42,29 +42,6 @@ const Card = ({ content }) => {
         </SwiperSlide>
       ))}
     </Swiper>
-    // <Swiper spaceBetween={10} slidesPerView={10} loop={true} navigation={true}>
-    //   {content.length &&
-    //     content.map((content, i) => (
-    //       <SwiperSlide className="SwiperSlide" key={i}>
-    //         <Link to={`/${content.media_type}/single/${content.id}`}>
-    //           <div className="img-container">
-    //             <img
-    //               src={`https://image.tmdb.org/t/p/w500/${content.poster_path}`}
-    //               alt={content.title}
-    //               className="img-front"
-    //             />
-    //             <div className="img-back">
-    //               <p>
-    //                 {content.overview
-    //                   ? truncate(content.overview)
-    //                   : "No description available, I guess you will have to watch it!"}
-    //               </p>
-    //             </div>
-    //           </div>
-    //         </Link>
-    //       </SwiperSlide>
-    //     ))}
-    // </Swiper>
   );
 };
 

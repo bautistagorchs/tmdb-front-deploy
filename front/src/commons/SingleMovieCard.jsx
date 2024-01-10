@@ -10,6 +10,10 @@ const SingleMovieCard = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [currentMovie, setCurrentMovie] = useState();
+  console.log(
+    "🚀 ~ file: SingleMovieCard.jsx:13 ~ SingleMovieCard ~ currentMovie:",
+    currentMovie?.id
+  );
   const [existingFavourite, setExistingFavourite] = useState(false);
   const [tab, setTab] = useState(1);
 
