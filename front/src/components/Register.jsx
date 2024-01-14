@@ -1,7 +1,8 @@
-import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
+import React, { useState } from "react";
+import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const initialState = { email: "", password: "", name: "", last_name: "" };
@@ -10,6 +11,7 @@ const Login = () => {
   // eslint-disable-next-line
   const [user, setUser] = useState({});
   const [inputData, setInputData] = useState(initialState);
+  const [showPassword, setShowPassword] = useState(false);
 
   const inputValue = (e) => {
     const { name, value } = e.target;
@@ -70,18 +72,33 @@ const Login = () => {
           </div>
           <div className="user-box">
             <input
-              type="password"
+              type={showPassword ? `text` : `password`}
               name="password"
               required=""
               onChange={inputValue}
             />
             <label className="placeholder-form-login">Password</label>
+            <div className="eye-icon">
+              <PiEyeSlashLight
+                fill="white"
+                onClick={() => setShowPassword(!showPassword)}
+                style={
+                  showPassword ? { display: "block" } : { display: "none" }
+                }
+              />
+              <PiEyeLight
+                fill="white"
+                onClick={() => setShowPassword(!showPassword)}
+                style={
+                  showPassword ? { display: "none" } : { display: "block" }
+                }
+              />
+            </div>
           </div>
           <div className="user-box">
             {invalidEmail && <p>{invalidEmail}</p>}{" "}
           </div>
           <center onClick={handleSubmit}>
-            {/* ASK HERE! */}
             <a href="/register">
               SIGN UP
               <span></span>
@@ -89,7 +106,6 @@ const Login = () => {
           </center>
         </form>
         <h4>Already have an account?</h4>
-        {/* ASK HERE! */}
         <a className="tag-a-register-login" href="/login">
           Sign In here!
         </a>
