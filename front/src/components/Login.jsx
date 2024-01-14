@@ -66,7 +66,16 @@ const Login = () => {
         <h4 className="h4-subtitle-login">- Full-Stack developer -</h4>
       </div>
       <h1>Hey, Welcome back!</h1>
-      <form className="form-container" action="submit" onSubmit={handleSubmit}>
+      <form
+        className="form-container"
+        action="submit"
+        onSubmit={handleSubmit}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit(e);
+          }
+        }}
+      >
         <div className="user-box">
           <input type="text" name="email" required="" onChange={inputValue} />
           <label className="placeholder-form-login">Email</label>

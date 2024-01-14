@@ -52,7 +52,13 @@ const Login = () => {
       <div className="register-content-container">
         <h1>Hey, Welcome!</h1>
         <h3>Give us your data and we"ll show you movies!</h3>
-        <form>
+        <form
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSubmit(e);
+            }
+          }}
+        >
           <div className="user-box">
             <input type="text" name="email" required="" onChange={inputValue} />
             <label className="placeholder-form-login">Email</label>

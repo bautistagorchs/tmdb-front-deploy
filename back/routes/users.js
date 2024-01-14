@@ -5,7 +5,9 @@ const { generateToken, validateToken } = require("../config/token");
 const { validateAuth } = require("../config/auth");
 
 router.post("/register", (req, res) => {
-  User.create(req.body).then((newUser) => res.status(201).send(newUser));
+  User.create(req.body)
+    .then((newUser) => res.status(201).send(newUser))
+    .catch((err) => console.error(err));
 });
 
 router.post("/login", (req, res) => {
