@@ -21,6 +21,8 @@ body {
   background-color: rgb(22, 19, 19);
   overflow: auto;
   scroll-behavior: smooth;
+  position: relative;
+  min-height: 100vh;
 }
 body::-webkit-scrollbar {
   width: 0.8em;
@@ -303,4 +305,9 @@ a {
 
 .buttons button:focus {
   outline: 0;
+}
+.cursor-pointer {
+  &:hover {
+    cursor: pointer;
+  }
 }

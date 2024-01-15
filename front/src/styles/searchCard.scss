@@ -1,3 +1,8 @@
+.search-container {
+  width: 100%;
+  min-height: 65vh;
+}
+
 .search-card-container {
   margin: 0 0px;
 }
@@ -52,4 +57,18 @@
       opacity: 1; // Texto visible al hacer hover
     }
   }
+}
+
+.input-search {
+  all: unset;
+  background-color: #000;
+  max-width: 20vh;
+  max-height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgb(253, 40, 40);
+  font-size: 15px;
+  color: #c5c5c5;
+  padding: 8px 0px 8px 8px;
+  margin-left: 86%;
+  margin-top: 20px;
 }

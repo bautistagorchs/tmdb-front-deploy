@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { GoSearch } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { setSearch } from "../store/search";
 import { initialState, setUser } from "../store/user";
-import axios from "axios";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -15,14 +16,6 @@ const Navbar = () => {
   }, [user]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleSearchClick = () => {
-    navigate("/search");
-  };
-  const handleKeyPress = (e) => {
-    dispatch(
-      setSearch({ movieResult: e.target.value, tvResult: e.target.value })
-    );
-  };
   const handleLogoutClick = (e) => {
     e.preventDefault();
     axios
@@ -42,6 +35,7 @@ const Navbar = () => {
   const setSearchValueNull = () => {
     dispatch(setSearch({ movieResult: null, tvResult: null }));
   };
+
   return (
     <div className="navbar">
       <div className="navbar-home-div">
@@ -62,15 +56,18 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-logout-div">
-        <div className="textInputWrapper">
-          <input
-            placeholder="Find a movie..."
-            name="searchresult"
-            id=""
-            onClick={handleSearchClick}
-            onChange={handleKeyPress}
-            type="input"
-            className="textInput"
+        <div
+          className="home-button"
+          id="search-button"
+          onClick={() => navigate("/search")}
+        >
+          search
+          <GoSearch
+            fill="white"
+            style={{
+              width: "1.5em",
+              height: "1.5em",
+            }}
           />
         </div>
         {pathname === `/account` ? (

@@ -8,7 +8,6 @@
 }
 .account-content-container {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +17,7 @@
 .side-bar-my-account {
   position: absolute;
   left: 3.5%;
-  top: 27%;
+  top: 3%;
   display: flex;
   flex-direction: column;
   gap: 3vh;
@@ -30,9 +29,7 @@
 }
 .personal-information-container {
   width: 70%;
-  height: 100%;
   height: 60vh;
-  margin-top: 7%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +91,6 @@
 .favourites-container {
   width: 70%;
   height: 60vh;
-  margin-top: 7%;
   display: flex;
   color: #7823d8;
   justify-content: center;
