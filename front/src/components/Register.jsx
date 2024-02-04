@@ -3,15 +3,17 @@ import { motion } from "framer-motion/dist/framer-motion";
 import React, { useState } from "react";
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import { useNavigate } from "react-router";
+import { Toaster, toast } from "../../node_modules/sonner/dist";
 
 const Login = () => {
   const initialState = { email: "", password: "", name: "", last_name: "" };
   const navigate = useNavigate();
   const [invalidEmail, setInvalidEmail] = useState(null);
-  // eslint-disable-next-line
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({}); // eslint-disable-line
   const [inputData, setInputData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [inputConfirmPassword, setInputConfirmPassword] = useState("");
 
   const inputValue = (e) => {
     const { name, value } = e.target;
@@ -19,21 +21,39 @@ const Login = () => {
       return { ...previousState, [name]: value };
     });
   };
-
+  const isValidEmail = (email) => {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/api/users/register", inputData)
-      .then((response) => {
-        setUser(response.data);
-        navigate("/login");
-      })
-      .catch(() =>
-        setInvalidEmail(
-          "Email associated with an existing account. Sadly we do not offer password recuperation, so better remember it!"
-        )
-      );
+    if (
+      (inputData.email ||
+        inputData.last_name ||
+        inputData.name ||
+        inputData.password ||
+        inputData.confirmPassword) === undefined
+    )
+      return toast.error("Por favor complete todos los campos");
+    else if (!isValidEmail(inputData.email))
+      toast.error("Ingrese un correo electronico valido");
+    else if (inputData.password !== inputConfirmPassword)
+      toast.error("Las contraseñas no coinciden");
+    else {
+      axios
+        .post("http://localhost:3001/api/users/register", inputData)
+        .then((response) => {
+          setUser(response.data);
+          navigate("/login");
+        })
+        .catch(() =>
+          setInvalidEmail(
+            "Email associated with an existing account. Sadly we do not offer password recuperation, so better remember it!"
+          )
+        );
+    }
     setInputData(initialState);
+    setInputConfirmPassword("");
   };
   document.body.classList.add("loginPage");
   return (
@@ -60,10 +80,6 @@ const Login = () => {
           }}
         >
           <div className="user-box">
-            <input type="text" name="email" required="" onChange={inputValue} />
-            <label className="placeholder-form-login">Email</label>
-          </div>
-          <div className="user-box">
             <input type="text" name="name" required="" onChange={inputValue} />
             <label className="placeholder-form-login">Name</label>
           </div>
@@ -75,6 +91,10 @@ const Login = () => {
               onChange={inputValue}
             />
             <label className="placeholder-form-login">Last name</label>
+          </div>
+          <div className="user-box">
+            <input type="text" name="email" required="" onChange={inputValue} />
+            <label className="placeholder-form-login">Email</label>
           </div>
           <div className="user-box">
             <input
@@ -102,13 +122,40 @@ const Login = () => {
             </div>
           </div>
           <div className="user-box">
+            <input
+              type={showConfirmPassword ? `text` : `password`}
+              name="confirmPassword"
+              required=""
+              onChange={(e) => setInputConfirmPassword(e.target.value)}
+            />
+            <label className="placeholder-form-login">Confirm password</label>
+            <div className="eye-icon">
+              <PiEyeSlashLight
+                fill="white"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={
+                  showConfirmPassword
+                    ? { display: "block" }
+                    : { display: "none" }
+                }
+              />
+              <PiEyeLight
+                fill="white"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={
+                  showConfirmPassword
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+              />
+            </div>
+          </div>
+          <div className="user-box">
             {invalidEmail && <p>{invalidEmail}</p>}{" "}
           </div>
           <center onClick={handleSubmit}>
-            <a href="/register">
-              SIGN UP
-              <span></span>
-            </a>
+            SIGN UP
+            <span></span>
           </center>
         </form>
         <h4>Already have an account?</h4>
@@ -116,6 +163,7 @@ const Login = () => {
           Sign In here!
         </a>
       </div>
+      <Toaster richColors position="top-left" expand={false} />
     </motion.div>
   );
 };

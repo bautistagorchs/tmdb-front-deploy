@@ -103,7 +103,7 @@ const Login = () => {
         </div>
         <div className="user-box">{error && <p>{error}</p>} </div>
         <center onClick={handleSubmit}>
-          <a>
+          <a href="/">
             SIGN IN
             <span></span>
           </a>
