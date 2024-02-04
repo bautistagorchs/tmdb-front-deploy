@@ -57,7 +57,7 @@ const SingleActorCard = () => {
           setIsFavouriteActor(response.data === "found" ? true : false)
         )
         .catch((err) => console.error(err));
-  }, [isFavouriteActor, currentActor]);
+  }, [isFavouriteActor, currentActor, user.email]);
   const handleFavouriteActor = () => {
     axios
       .post(`http://localhost:3001/api/users/favourite/actors`, {

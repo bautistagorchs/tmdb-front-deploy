@@ -13,7 +13,6 @@ const Grid = () => {
   const [actionMovies, setActionMovies] = useState([]);
   const [animationMovies, setAnimationMovies] = useState([]);
   const [popularPeople, setPopularPeople] = useState([]);
-  const [loading, setLoading] = useState(true);
   const options = {
     headers: {
       accept: "application/json",

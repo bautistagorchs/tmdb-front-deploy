@@ -25,7 +25,7 @@ const Account = () => {
       .then((res) => {
         res.data.length &&
           res.data.map((element) => {
-            axios
+            return axios
               .get(`https://api.themoviedb.org/3/movie/${element}`, options)
               .then((movie) => favouriteMoviesArray.push(movie.data))
               .catch((err) => console.error(err));
@@ -33,7 +33,7 @@ const Account = () => {
       })
       .then(() => setFavouriteMovies(favouriteMoviesArray))
       .catch((err) => console.error(err));
-  }, []);
+  }, []); // eslint-disable-line
   useEffect(() => {
     axios
       .get(`http://localhost:3001/api/users/favourite/actor/${user.email}`, {
@@ -41,7 +41,7 @@ const Account = () => {
       })
       .then((response) => {
         response.data.map((actorId) => {
-          axios
+          return axios
             .get(`https://api.themoviedb.org/3/person/${actorId}`, options)
             .then((actor) => favouriteActorsArray.push(actor.data))
             .catch((err) => console.error(err));
@@ -49,7 +49,7 @@ const Account = () => {
       })
       .then(() => setFavouriteActors(favouriteActorsArray))
       .catch((err) => console.error(err));
-  }, [user]);
+  }, [user]); // eslint-disable-line
   return (
     <div className="account-container">
       <div className="account-content-container">
@@ -106,7 +106,10 @@ const Account = () => {
         >
           <div className="inner-container">
             <div className="img-container">
-              <img src="https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Blank&hatColor=White&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=Hoodie&clotheColor=White&eyeType=Wink&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Light" />
+              <img
+                src="https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Blank&hatColor=White&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=Hoodie&clotheColor=White&eyeType=Wink&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Light"
+                alt="your avatar"
+              />
               <button className="edit-info-button">Editar informacion</button>
             </div>
             <div className="personal-data">

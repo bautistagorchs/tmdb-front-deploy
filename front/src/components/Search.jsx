@@ -15,7 +15,7 @@ const Search = () => {
     return () => {
       document.body.classList.remove("main");
     };
-  }, []);
+  }, []); // eslint-disable-line
   useEffect(() => {
     window.scrollTo(0, -1000);
   }, []);

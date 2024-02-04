@@ -13,9 +13,7 @@ const SearchCard = ({ search }) => {
     <div id="search-page" className="parent">
       {search.length
         ? search.map((content, i) => {
-            {
-              if (!content.poster_path && !content.profile_path) return;
-            }
+            if (!content.poster_path && !content.profile_path) return "";
             return (
               <Link to={`/movies/single/${content.id}`} key={i}>
                 <div className="search-card-container">

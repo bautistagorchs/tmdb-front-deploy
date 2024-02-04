@@ -15,7 +15,7 @@ const MoviesGrid = ({ content }) => {
       setCurrentIndex((prevIndex) => (prevIndex + 10) % content.length);
     }, 10000);
     return () => clearInterval(interval);
-  }, [currentIndex, content]);
+  }, [currentIndex, content, currentMovies.length]);
 
   return (
     <div className="movies-grid-container">

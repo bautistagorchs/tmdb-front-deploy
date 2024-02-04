@@ -49,13 +49,13 @@ const Footer = () => {
           </Link>
         </div>
         <div className="info-container">
-          <a href="http://" target="_blank">
+          <a href="http://" target="_blank" rel="noreferrer">
             <p className="info-footer">Sobre el proyecto</p>
           </a>
-          <a href="http://" target="_blank">
+          <a href="http://" target="_blank" rel="noreferrer">
             <p className="info-footer">Herramientas</p>
           </a>
-          <a href="http://" target="_blank">
+          <a href="http://" target="_blank" rel="noreferrer">
             <p className="info-footer">Algo mas</p>
           </a>
         </div>
