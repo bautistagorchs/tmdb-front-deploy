@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import MovieCardGrid from "./MovieCardGrid";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { Toaster, toast } from "../../node_modules/sonner/dist";
 
 const SingleActorCard = () => {
   const truncate = (bio) => {
@@ -64,7 +65,11 @@ const SingleActorCard = () => {
         email: user.email,
         id: currentActor?.id,
       })
-      .then(() => {})
+      .then(() =>
+        isFavouriteActor
+          ? toast.success("Removed from favourites")
+          : toast.success("You added this actor to your favourites")
+      )
       .catch((err) => console.error(err));
     setIsFavouriteActor();
   };
@@ -162,6 +167,7 @@ const SingleActorCard = () => {
           </div>
         </div>
       </div>
+      <Toaster richColors position="bottom-right" />
     </div>
   );
 };

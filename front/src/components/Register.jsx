@@ -49,15 +49,9 @@ const Login = () => {
           if (response.response.data === "not unique email")
             return toast.error("Error! Email ya asociado a una cuenta");
           else
-            return toast(
-              "Error interno del servidor. Refresque la pagina e intente nuevamente",
-              {
-                action: {
-                  label: "Refrescar",
-                  onClick: () => window.location.reload(),
-                },
-              }
-            );
+            return toast.message("Error interno del servidor.", {
+              description: "Refresque la pagina e intente nuevamente",
+            });
         });
     }
     setInputData(initialState);

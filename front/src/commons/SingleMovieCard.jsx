@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { Toaster, toast } from "../../node_modules/sonner/dist";
 
 const SingleMovieCard = () => {
   const user = useSelector((state) => state.user);
@@ -22,7 +23,12 @@ const SingleMovieCard = () => {
             { email: user.email, newFavourite: currentMovie.id },
             { withCredentials: true }
           )
-          .then(() => {})
+
+          .then(() =>
+            existingFavourite
+              ? toast.success("Removed from favourites")
+              : toast.success("Added to favourites")
+          )
           .catch((err) => console.error("that did not go well"))
       : console.log("for now no habia email");
     setExistingFavourite();
@@ -155,6 +161,7 @@ const SingleMovieCard = () => {
           </div>
         )}
       </div>
+      <Toaster richColors position="bottom-right" />
     </div>
   );
 };
