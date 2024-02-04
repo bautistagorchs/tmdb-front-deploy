@@ -8,7 +8,6 @@ import { Toaster, toast } from "../../node_modules/sonner/dist";
 const Login = () => {
   const initialState = { email: "", password: "", name: "", last_name: "" };
   const navigate = useNavigate();
-  const [invalidEmail, setInvalidEmail] = useState(null);
   const [user, setUser] = useState({}); // eslint-disable-line
   const [inputData, setInputData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
@@ -25,32 +24,41 @@ const Login = () => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      (inputData.email ||
-        inputData.last_name ||
-        inputData.name ||
-        inputData.password ||
-        inputData.confirmPassword) === undefined
-    )
+      inputData.email === "" ||
+      inputData.last_name === "" ||
+      inputData.name === "" ||
+      inputData.password === ""
+    ) {
       return toast.error("Por favor complete todos los campos");
-    else if (!isValidEmail(inputData.email))
-      toast.error("Ingrese un correo electronico valido");
-    else if (inputData.password !== inputConfirmPassword)
-      toast.error("Las contraseñas no coinciden");
-    else {
+    } else if (!isValidEmail(inputData.email)) {
+      return toast.error("Ingrese un correo electronico valido");
+    } else if (inputData.password !== inputConfirmPassword) {
+      return toast.error("Las contraseñas no coinciden");
+    } else {
       axios
         .post("http://localhost:3001/api/users/register", inputData)
         .then((response) => {
           setUser(response.data);
           navigate("/login");
         })
-        .catch(() =>
-          setInvalidEmail(
-            "Email associated with an existing account. Sadly we do not offer password recuperation, so better remember it!"
-          )
-        );
+        .catch((response) => {
+          if (response.response.data === "not unique email")
+            return toast.error("Error! Email ya asociado a una cuenta");
+          else
+            return toast(
+              "Error interno del servidor. Refresque la pagina e intente nuevamente",
+              {
+                action: {
+                  label: "Refrescar",
+                  onClick: () => window.location.reload(),
+                },
+              }
+            );
+        });
     }
     setInputData(initialState);
     setInputConfirmPassword("");
@@ -150,9 +158,6 @@ const Login = () => {
               />
             </div>
           </div>
-          <div className="user-box">
-            {invalidEmail && <p>{invalidEmail}</p>}{" "}
-          </div>
           <center onClick={handleSubmit}>
             SIGN UP
             <span></span>
@@ -163,7 +168,7 @@ const Login = () => {
           Sign In here!
         </a>
       </div>
-      <Toaster richColors position="top-left" expand={false} />
+      <Toaster richColors position="top-left" expand={true} />
     </motion.div>
   );
 };

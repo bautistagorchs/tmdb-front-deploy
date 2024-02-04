@@ -5,9 +5,13 @@ const { generateToken, validateToken } = require("../config/token");
 const { validateAuth } = require("../config/auth");
 
 router.post("/register", (req, res) => {
-  User.create(req.body)
-    .then((newUser) => res.status(201).send(newUser))
-    .catch((err) => console.error(err));
+  User.findOne({ where: { email: req.body.email } }).then((user) => {
+    if (user) return res.status(400).send("not unique email");
+
+    User.create(req.body)
+      .then((newUser) => res.status(201).send(newUser))
+      .catch((err) => res.status(400).send(err));
+  });
 });
 
 router.post("/login", (req, res) => {
