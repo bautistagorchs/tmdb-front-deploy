@@ -60,6 +60,7 @@ const Search = () => {
           placeholder="Type something..."
           className="input-search"
           onChange={inputValue}
+          autoFocus
         />
         <Header title={`Results found for: ${inputData.value || "..."}`} />
         <SearchCard search={searchResult} />

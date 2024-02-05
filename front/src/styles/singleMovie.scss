@@ -28,28 +28,29 @@
 .div2 {
   width: 50%;
 }
-.div2 .smcdiv2 {
+.smcdiv2 {
   h1 {
+    margin: -10px 0 0px 0;
     font-size: 3rem;
-    margin-bottom: 0px;
   }
   h2 {
-    margin-top: 10px;
+    margin-top: 0;
     letter-spacing: 3px;
     font-style: italic;
     font-weight: 100;
   }
   h3 {
-    margin: 3% 0px;
     font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: 1px;
   }
+  span {
+    text-decoration: underline;
+  }
   p {
     color: #c4c0c0;
-    width: 60%;
-    text-align: left;
-    font-size: 105%;
+    width: 110%;
+    font-size: 100%;
   }
 }
 

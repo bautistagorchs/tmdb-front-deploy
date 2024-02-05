@@ -39,6 +39,27 @@ const MovieCardGrid = ({ content }) => {
               </div>
             </div>
           </Link>
+        ) : !element.birthday ? (
+          <Link to={`/tvshow/single/${element.id}`}>
+            <div className="movie-card" key={i}>
+              <img
+                src={
+                  element.poster_path &&
+                  `https://image.tmdb.org/t/p/w500/${element.poster_path}`
+                }
+                alt=""
+                className="img-front"
+                style={{
+                  height: "26vh",
+                  margin: "0.5vh",
+                }}
+              />
+              <div className="overview-back">
+                <p className="overview-movie-name">-{element?.name}-</p>
+                <p className="overview-text">{truncate(element?.overview)}</p>
+              </div>
+            </div>
+          </Link>
         ) : (
           <Link to={`/actor/single/${element.id}`}>
             <div className="movie-card" key={i}>

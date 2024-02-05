@@ -11,6 +11,7 @@ const SingleMovieCard = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [currentMovie, setCurrentMovie] = useState();
+  console.log(`🚀 - currentMovie:`, currentMovie);
 
   const [existingFavourite, setExistingFavourite] = useState(false);
   const [tab, setTab] = useState(1); // eslint-disable-line
@@ -116,14 +117,19 @@ const SingleMovieCard = () => {
               </h1>
               <h2>{currentMovie?.tagline}</h2>
               <h3>
-                Genres: {" - "}
+                <span>Genres:</span>
+                {" - "}
                 {currentMovie?.genres
                   ? currentMovie.genres.map((e) => e.name + " - ")
                   : "no genres available"}
               </h3>
               <h3>
-                Released on: {currentMovie?.release_date}{" "}
-                {currentMovie?.first_air_date}
+                <span>Released on:</span>
+                {currentMovie?.release_date} {currentMovie?.first_air_date}
+              </h3>
+              <h3 id="bold">
+                {currentMovie?.number_of_seasons} seasons and{" "}
+                {currentMovie?.number_of_episodes} episodes
               </h3>
               <p>{currentMovie?.overview}</p>
             </div>

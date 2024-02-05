@@ -14,6 +14,7 @@ const SingleActorCard = () => {
   const navigate = useNavigate();
   const [currentActor, setCurrentActor] = useState();
   const [currentActorMovies, setCurrentActorMovies] = useState();
+  const [currentActorTvShows, setCurrentActorTvShows] = useState();
   const [isFavouriteActor, setIsFavouriteActor] = useState();
   const [switchTabs, setSwitchTabs] = useState(
     parseInt(localStorage.getItem("actorTab"))
@@ -45,6 +46,13 @@ const SingleActorCard = () => {
       `https://api.themoviedb.org/3/person/${currentActor?.id}/movie_credits`,
       options,
       setCurrentActorMovies
+    ); // eslint-disable-next-line
+  }, [currentActor]);
+  useEffect(() => {
+    requestToAPI(
+      `https://api.themoviedb.org/3/person/${currentActor?.id}/tv_credits`,
+      options,
+      setCurrentActorTvShows
     ); // eslint-disable-next-line
   }, [currentActor]);
   useEffect(() => {
@@ -119,6 +127,22 @@ const SingleActorCard = () => {
                 Movies
               </h2>
             </button>
+            <button
+              className="button-tab"
+              onClick={() => {
+                setSwitchTabs(3);
+                localStorage.setItem("actorTab", 3);
+              }}
+              style={
+                switchTabs === 3
+                  ? { border: "1px solid rgb(230,63,63)" }
+                  : { border: "none" }
+              }
+            >
+              <h2 className="h2-text-tab" style={{ padding: "0 30px" }}>
+                Tv Shows
+              </h2>
+            </button>
           </div>
           <div id="actor-birth">
             <div
@@ -163,6 +187,14 @@ const SingleActorCard = () => {
           >
             <div className="movies-from-actor-container">
               <MovieCardGrid content={currentActorMovies?.cast} />
+            </div>
+          </div>
+          <div
+            id="actor-movies"
+            style={{ display: switchTabs === 3 ? `flex` : `none` }}
+          >
+            <div className="movies-from-actor-container">
+              <MovieCardGrid content={currentActorTvShows?.cast} />
             </div>
           </div>
         </div>
