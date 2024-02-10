@@ -24,7 +24,7 @@ const App = () => {
   const location = useLocation();
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/users/me", {
+      .get(`http://${process.env.REACT_APP_API_URL}/api/users/me`, {
         withCredentials: true,
       })
       .then((user) => dispatch(setUser(user.data)))

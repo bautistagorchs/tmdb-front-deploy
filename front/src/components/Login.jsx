@@ -36,9 +36,13 @@ const Login = () => {
       return setError("you have to enter your email and password");
     }
     axios
-      .post("http://localhost:3001/api/users/login", inputData, {
-        withCredentials: true,
-      })
+      .post(
+        `http://${process.env.REACT_APP_API_URL}/api/users/login`,
+        inputData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.email) {
           dispatch(setUser(res.data));

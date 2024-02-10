@@ -20,7 +20,7 @@ const Navbar = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:3001/api/users/logout",
+        `http://${process.env.REACT_APP_API_URL}/api/users/logout`,
         { user: user.email },
         { withCredentials: true }
       )

@@ -20,7 +20,7 @@ const SingleMovieCard = () => {
     user.email
       ? axios
           .post(
-            `http://localhost:3001/api/users/favourites`,
+            `http://${process.env.REACT_APP_API_URL}/api/users/favourites`,
             { email: user.email, newFavourite: currentMovie.id },
             { withCredentials: true }
           )
@@ -77,7 +77,7 @@ const SingleMovieCard = () => {
     user.email &&
       axios
         .get(
-          `http://localhost:3001/api/users/favourites/exist/${user.email}/${currentMovie?.id}`,
+          `http://${process.env.REACT_APP_API_URL}/api/users/favourites/exist/${user.email}/${currentMovie?.id}`,
           {
             withCredentials: true,
           }

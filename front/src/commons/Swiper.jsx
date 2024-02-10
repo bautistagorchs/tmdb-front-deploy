@@ -16,7 +16,7 @@ const Card = ({ content }) => {
       {content.map((content, i) => (
         <SwiperSlide className="SwiperSlide" key={i}>
           <Link to={`/${content?.media_type}/single/${content?.id}`}>
-            <div className="img-container">
+            <div className="img-container cursor-pointer">
               {content.poster_path ? (
                 <>
                   <img

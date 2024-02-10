@@ -59,7 +59,7 @@ const SingleActorCard = () => {
     user.email &&
       axios
         .get(
-          `http://localhost:3001/api/users/favourite/actor/exist/${user.email}/${currentActor?.id}`,
+          `http://${process.env.REACT_APP_API_URL}/api/users/favourite/actor/exist/${user.email}/${currentActor?.id}`,
           { withCredentials: true }
         )
         .then((response) =>
@@ -69,10 +69,13 @@ const SingleActorCard = () => {
   }, [isFavouriteActor, currentActor, user.email]);
   const handleFavouriteActor = () => {
     axios
-      .post(`http://localhost:3001/api/users/favourite/actors`, {
-        email: user.email,
-        id: currentActor?.id,
-      })
+      .post(
+        `http://${process.env.REACT_APP_API_URL}/api/users/favourite/actors`,
+        {
+          email: user.email,
+          id: currentActor?.id,
+        }
+      )
       .then(() =>
         isFavouriteActor
           ? toast.success("Removed from favourites")

@@ -14,7 +14,7 @@ const SwiperPeople = ({ content }) => {
           <SwiperSlide className="swiper-slide-people" key={i}>
             <Link to={`/actor/single/${content.id}`}>
               <div
-                className="img-container-people"
+                className="img-container-people cursor-pointer"
                 onClick={localStorage.setItem("actorTab", 1)}
               >
                 <img

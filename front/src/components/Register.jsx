@@ -40,7 +40,10 @@ const Login = () => {
       return toast.error("Las contraseñas no coinciden");
     } else {
       axios
-        .post("http://localhost:3001/api/users/register", inputData)
+        .post(
+          `http://${process.env.REACT_APP_API_URL}/api/users/register`,
+          inputData
+        )
         .then((response) => {
           setUser(response.data);
           navigate("/login");

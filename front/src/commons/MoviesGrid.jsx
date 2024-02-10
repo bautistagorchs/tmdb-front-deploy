@@ -29,7 +29,7 @@ const MoviesGrid = ({ content }) => {
         </div>
         <div className="movies-container">
           {currentMovies.map((element, i) => (
-            <div className={`movie${i + 1} first-child`} key={i}>
+            <div className={`movie${i + 1} first-child cursor-pointer`} key={i}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${element.poster_path}`}
                 alt=""

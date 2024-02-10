@@ -19,9 +19,12 @@ const Account = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/users/favourites/${user.email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `http://${process.env.REACT_APP_API_URL}/api/users/favourites/${user.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         res.data.length &&
           res.data.map((element) => {
@@ -36,9 +39,12 @@ const Account = () => {
   }, []); // eslint-disable-line
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/users/favourite/actor/${user.email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `http://${process.env.REACT_APP_API_URL}/api/users/favourite/actor/${user.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
         response.data.map((actorId) => {
           return axios
